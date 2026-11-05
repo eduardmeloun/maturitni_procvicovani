@@ -12,10 +12,10 @@ export function calculateStreak(dates: string[]): number {
   if (!dates || dates.length === 0) return 0;
 
   const uniqueSortedDates = Array.from(new Set(dates)).sort().reverse();
-  const today = new Date().toISOString().split('T')[0];
+  const today = new Intl.DateTimeFormat('sv-SE', { timeZone: 'Europe/Prague' }).format(new Date());
   const yesterdayDate = new Date();
   yesterdayDate.setDate(yesterdayDate.getDate() - 1);
-  const yesterday = yesterdayDate.toISOString().split('T')[0];
+  const yesterday = new Intl.DateTimeFormat('sv-SE', { timeZone: 'Europe/Prague' }).format(yesterdayDate);
 
   const mostRecent = uniqueSortedDates[0];
   if (mostRecent !== today && mostRecent !== yesterday) {
@@ -85,7 +85,7 @@ export function formatLast7Days(history: CardAttemptHistory[]): {
   for (let i = 6; i >= 0; i--) {
     const d = new Date();
     d.setDate(d.getDate() - i);
-    const dateStr = d.toISOString().split('T')[0];
+    const dateStr = new Intl.DateTimeFormat('sv-SE', { timeZone: 'Europe/Prague' }).format(d);
     const isToday = i === 0;
 
     const matched = history.find((h) => h.date === dateStr);

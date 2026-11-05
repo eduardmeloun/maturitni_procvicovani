@@ -5,24 +5,15 @@ import type { Page } from '../../../shared/config/navigation'
 import styles from './SiteHeader.module.scss'
 
 type Props = {
+  authenticated: boolean
+  onLogout: () => void
   page: Page
   onNavigate: (page: Page) => void
   onAuth: (mode: AuthMode) => void
 }
 
-export function SiteHeader({ page, onNavigate, onAuth }: Props) {
+export function SiteHeader({ page, onNavigate, onAuth, authenticated, onLogout }: Props) {
   const [menuOpen, setMenuOpen] = useState(false)
-
-  function goToSection(id: string) {
-    setMenuOpen(false)
-    if (page !== 'home') {
-      onNavigate('home')
-      window.setTimeout(() => document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' }), 80)
-      return
-    }
-
-    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
-  }
 
   function goToContact() {
     setMenuOpen(false)
@@ -37,12 +28,14 @@ export function SiteHeader({ page, onNavigate, onAuth }: Props) {
           <Icon name={menuOpen ? 'close' : 'menu'} size={22} />
         </button>
         <nav className={`${styles.nav} ${menuOpen ? styles.open : ''}`} aria-label="Hlavní navigace">
-          <button type="button" className={styles.navLink} onClick={() => goToSection('flashcards')}>Kartičky</button>
-          <button type="button" className={styles.navLink} onClick={() => goToSection('leaderboard')}>Leaderboard</button>
+          <button type="button" className={styles.navLink} onClick={() => { onNavigate('flashcards'); setMenuOpen(false) }}>Kartičky</button>
+          <button type="button" className={styles.navLink} onClick={() => { onNavigate('leaderboard'); setMenuOpen(false) }}>Leaderboard</button>
           <button type="button" className={`${styles.navLink} ${page === 'contact' ? styles.active : ''}`} onClick={goToContact}>Kontakty</button>
           <div className={styles.actions}>
+            {authenticated ? <><Button onClick={() => { onNavigate('profile'); setMenuOpen(false) }}>Profil</Button><Button variant="text" onClick={onLogout}>Odhl?sit se</Button></> : <>
             <Button variant="text" onClick={() => { onAuth('login'); setMenuOpen(false) }}>Přihlásit se</Button>
             <Button onClick={() => { onAuth('register'); setMenuOpen(false) }}>Vytvořit účet <Icon name="arrow" size={17} /></Button>
+            </>}
           </div>
         </nav>
       </div>

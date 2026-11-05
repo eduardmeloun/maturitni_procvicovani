@@ -1,4 +1,5 @@
 import { createServer } from 'node:http';
+import { createAuth } from './auth.mjs';
 import { getSessionUser } from './session.mjs';
 import { transaction } from './database.mjs';
 
@@ -21,7 +22,8 @@ async function readJson(req) {
 }
 export const studyDay = (date = new Date()) => new Intl.DateTimeFormat('sv-SE', { timeZone: 'Europe/Prague' }).format(date);
 
-export function createApp(db, { allowedOrigin = 'http://localhost:5173' } = {}) {
+export function createApp(db, { allowedOrigin = 'http://localhost:5173', sendReset, rateLimit = 20 } = {}) {
+  const auth = createAuth(db, { allowedOrigin, sendReset, rateLimit, send, readJson, HttpError });
   return createServer(async (req, res) => {
     try {
       const url = new URL(req.url, 'http://localhost');
@@ -38,6 +40,14 @@ export function createApp(db, { allowedOrigin = 'http://localhost:5173' } = {}) 
         return send(res, 200, db.prepare(`SELECT id,subject_id AS subjectId,name,position FROM topics
           WHERE (? IS NULL OR subject_id=?) ORDER BY position,id`).all(id, id));
       }
+      if (req.method === 'GET' && path === '/api/leaderboard') {
+        const month = studyDay().slice(0, 7);
+        return send(res, 200, db.prepare(`SELECT u.id,u.username AS name,
+          COALESCE(SUM(a.xp),0) AS xpAllTime,
+          COALESCE(SUM(CASE WHEN substr(a.study_day,1,7)=? THEN a.xp ELSE 0 END),0) AS xpThisMonth
+          FROM users u LEFT JOIN attempts a ON a.user_id=u.id GROUP BY u.id ORDER BY xpAllTime DESC,u.id`).all(month));
+      }
+      if (path.startsWith('/api/auth/')) return await auth(req, res, path);
       const protectedPath = ['/api/me', '/api/cards', '/api/progress', '/api/activity'].includes(path);
       if (!protectedPath) throw new HttpError(404, 'API endpoint neexistuje.');
       const user = getSessionUser(db, req);

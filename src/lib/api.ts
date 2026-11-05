@@ -3,10 +3,11 @@ export class ApiError extends Error {
   readonly status: number
   constructor(status: number, message: string) { super(message); this.status = status }
 }
-async function request<T>(path: string, init?: RequestInit): Promise<T> {
+export async function request<T>(path: string, init?: RequestInit): Promise<T> {
   const response = await fetch(`/api${path}`, { ...init, credentials: 'same-origin' })
   if (!response.headers.get('content-type')?.includes('application/json')) throw new ApiError(response.status, 'API nevrátilo JSON. Zkontroluj spuštění serveru.')
   const data = await response.json()
+  if (response.status === 401 && !path.startsWith('/auth/') && path !== '/me') window.dispatchEvent(new Event('session-expired'))
   if (!response.ok) throw new ApiError(response.status, data.error?.message || 'Požadavek selhal.')
   return data as T
 }

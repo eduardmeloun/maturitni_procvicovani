@@ -52,24 +52,29 @@ const result = await api.saveProgress(attempt)
 
 POST vrací attemptId, cardId, status, xpAwarded, duplicate. Návrhové pravidlo základu: 10 XP za první known dané karty za celou historii, další pokusy 0 XP. Změna stavu XP neodečítá. Duplicitní požadavek vrátí původní XP, ale znovu je nepřičte; UI musí obnovit celková data, ne slepě přičítat odpověď. Neplatná data 400, bez relace 401, cizí Origin 403, neexistující karta 404, kolize attemptId 409. Jiný uživatel nemůže číst ani zapisovat cizí progress přes userId v požadavku.
 
-## Napojení účtů (další člen)
+## Účty a integrované stránky
 
-Implementuj registraci, login, logout a obnovu hesla jako nový modul, včetně validace, hashování hesel (např. scrypt), limitování pokusů a ověření Origin u zápisů. Po ověření účtu použij:
+Účty implementuje `server/auth.mjs`, modal `src/features/auth` a společná navigace `src/app/App.tsx`.
+Veřejné POST endpointy (vždy s povoleným Origin a JSON):
 
-```js
-import { createSession, revokeSession } from './session.mjs';
-const cookie = createSession(db, userId, { secure: process.env.NODE_ENV === 'production' });
-res.setHeader('Set-Cookie', cookie);
-// logout: revokeSession(db, req) odstraní relaci a vrátí mazací cookie.
-```
+| URL | Tělo |
+| --- | --- |
+| /api/auth/register | username, email, password, passwordConfirm |
+| /api/auth/login | login (jméno nebo e-mail), password |
+| /api/auth/logout | {} |
+| /api/auth/forgot-password | email |
+| /api/auth/reset-password | token, password, passwordConfirm |
 
-Token patří do HttpOnly cookie, nikoliv localStorage. V produkci HTTPS a Secure cookie. Auth endpointy a žádný výchozí přihlášený účet zatím neexistují. Chráněné endpointy tedy do dokončení účtů správně vracejí 401; integrační testy si vytvářejí izolované testovací relace přímo v DB.
+Registrace (201) a přihlášení (200) vracejí veřejný User a nastavují cookie. Ostatní vracejí potvrzení; odhlášení maže relaci. Hesla používají scrypt se solí, tokeny relací a obnovy SHA-256. Obnova ruší všechny relace účtu. Produkční e-mailové doručování a limitování popisuje README.
+Migrace 002_password_resets.sql přidává pouze jednorázové tokeny obnovy, původní 001 zůstává beze změny.
+GET /api/leaderboard je veřejný a vrací id, name, xpAllTime a xpThisMonth vypočtené serverem z attempts. Profil načítá vlastní progress/activity; žádný mock se nepoužívá pro živá data.
+`src/features/study/StudyPage.tsx` používá společný API klient. Původní otázky ze `src/data/questions.js` přidává opakovatelný seed, původní soubor Flashcards.jsx slouží jako kompatibilní export.
 
 ## Migrace a slučování
 
-Neměň aplikovanou 001_initial.sql. Přidej 002_nazev.sql atd.; čísla si domluvte, dva soubory nesmějí mít stejné číslo. Migrace se aplikují automaticky při startu serveru a evidují se v migrations. Schéma, seed a testy patří do Gitu; data/app.sqlite a osobní data ne.
+Neměň aplikovanou 001_initial.sql. Další migraci přidej jako 003_nazev.sql atd.; čísla si domluvte, dva soubory nesmějí mít stejné číslo. Migrace se aplikují automaticky při startu serveru a evidují se v migrations. Schéma, seed a testy patří do Gitu; data/app.sqlite a osobní data ne.
 
-Nejprve slučte tento základ do společné main. Ostatní si ho přenesou do svých branchí před napojováním. Před mergem: npm test a npm run build. Finální společný scénář: založení účtu → přihlášení → hodnocení kartičky → obnovení stránky → správný vlastní pokrok a statistiky.
+Pracovní větve sdílejí společný integrovaný základ; main zůstala beze změny. Před mergem: npm test a npm run build. Finální společný scénář: založení účtu → přihlášení → hodnocení kartičky → obnovení stránky → správný vlastní pokrok a statistiky.
 
 ## Produkční provoz
 
