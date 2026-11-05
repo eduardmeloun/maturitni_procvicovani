@@ -1,0 +1,513 @@
+[
+  {
+    "id": "site-01-01",
+    "topicId": "site-okruh-01",
+    "theme": "Přepojování okruhů a paketů",
+    "question": "Co je přepojování okruhů?",
+    "answer": "Před přenosem se vytvoří vyhrazená cesta mezi účastníky, která zůstává rezervována po dobu spojení."
+  },
+  {
+    "id": "site-01-02",
+    "topicId": "site-okruh-01",
+    "theme": "Přepojování okruhů a paketů",
+    "question": "Co je přepojování paketů?",
+    "answer": "Data se rozdělí na pakety, které síť přenáší nezávisle a mohou procházet různými cestami."
+  },
+  {
+    "id": "site-01-03",
+    "topicId": "site-okruh-01",
+    "theme": "Přepojování okruhů a paketů",
+    "question": "Jaká je výhoda paketového přenosu?",
+    "answer": "Síťové prostředky se sdílejí efektivněji mezi více komunikacemi."
+  },
+  {
+    "id": "site-02-01",
+    "topicId": "site-okruh-02",
+    "theme": "Analogové a digitální sítě",
+    "question": "Jak se liší analogový a digitální signál?",
+    "answer": "Analogový signál se mění spojitě, digitální používá diskrétní hodnoty."
+  },
+  {
+    "id": "site-02-02",
+    "topicId": "site-okruh-02",
+    "theme": "Analogové a digitální sítě",
+    "question": "Co je digitalizace signálu?",
+    "answer": "Převod analogového signálu na digitální reprezentaci pomocí vzorkování, kvantování a kódování."
+  },
+  {
+    "id": "site-03-01",
+    "topicId": "site-okruh-03",
+    "theme": "Klient–server a peer-to-peer",
+    "question": "Jak funguje architektura klient–server?",
+    "answer": "Klient žádá o službu a server ji poskytuje."
+  },
+  {
+    "id": "site-03-02",
+    "topicId": "site-okruh-03",
+    "theme": "Klient–server a peer-to-peer",
+    "question": "Co znamená peer-to-peer (P2P)?",
+    "answer": "Uzly mohou vystupovat současně jako poskytovatelé i příjemci prostředků."
+  },
+  {
+    "id": "site-03-03",
+    "topicId": "site-okruh-03",
+    "theme": "Klient–server a peer-to-peer",
+    "question": "Jaká je výhoda centralizovaného serveru?",
+    "answer": "Jednodušší centrální správa uživatelů, dat a přístupových práv."
+  },
+  {
+    "id": "site-04-01",
+    "topicId": "site-okruh-04",
+    "theme": "Sběrnicová topologie",
+    "question": "Jak funguje sběrnicová topologie?",
+    "answer": "Všechna zařízení sdílejí jedno společné přenosové médium."
+  },
+  {
+    "id": "site-04-02",
+    "topicId": "site-okruh-04",
+    "theme": "Sběrnicová topologie",
+    "question": "Jaká je nevýhoda klasické sběrnicové topologie?",
+    "answer": "Porucha společného vedení může vyřadit celou síť a sdílené médium způsobuje kolize."
+  },
+  {
+    "id": "site-05-01",
+    "topicId": "site-okruh-05",
+    "theme": "Hvězdicová topologie",
+    "question": "Jak funguje hvězdicová topologie?",
+    "answer": "Každé koncové zařízení má samostatné spojení s centrálním prvkem, obvykle switchem."
+  },
+  {
+    "id": "site-05-02",
+    "topicId": "site-okruh-05",
+    "theme": "Hvězdicová topologie",
+    "question": "Co se stane při poruše centrálního switche?",
+    "answer": "Zařízení připojená přes tento switch ztratí vzájemnou konektivitu."
+  },
+  {
+    "id": "site-06-01",
+    "topicId": "site-okruh-06",
+    "theme": "Hvězda a strom",
+    "question": "Jak se liší hvězdicová a stromová topologie?",
+    "answer": "Hvězda má jeden centrální uzel, strom hierarchicky propojuje více uzlů nebo hvězd."
+  },
+  {
+    "id": "site-06-02",
+    "topicId": "site-okruh-06",
+    "theme": "Hvězda a strom",
+    "question": "Proč se používá stromová topologie?",
+    "answer": "Umožňuje hierarchické rozšíření sítě a její členění do více částí."
+  },
+  {
+    "id": "site-07-01",
+    "topicId": "site-okruh-07",
+    "theme": "LAN, MAN a WAN",
+    "question": "Co je LAN?",
+    "answer": "Local Area Network je síť na malém území, například v budově."
+  },
+  {
+    "id": "site-07-02",
+    "topicId": "site-okruh-07",
+    "theme": "LAN, MAN a WAN",
+    "question": "Co je MAN?",
+    "answer": "Metropolitan Area Network propojuje sítě v rámci města nebo metropolitní oblasti."
+  },
+  {
+    "id": "site-07-03",
+    "topicId": "site-okruh-07",
+    "theme": "LAN, MAN a WAN",
+    "question": "Co je WAN?",
+    "answer": "Wide Area Network propojuje sítě na velké geografické vzdálenosti."
+  },
+  {
+    "id": "site-08-01",
+    "topicId": "site-okruh-08",
+    "theme": "Veřejné, soukromé sítě a VPN",
+    "question": "Jaký je rozdíl mezi veřejnou a soukromou sítí?",
+    "answer": "Veřejná síť je dostupná širokému okruhu uživatelů, soukromá je určena omezené skupině."
+  },
+  {
+    "id": "site-08-02",
+    "topicId": "site-okruh-08",
+    "theme": "Veřejné, soukromé sítě a VPN",
+    "question": "Co je VPN?",
+    "answer": "Virtuální privátní síť vytváří logické spojení přes jinou síť, často se šifrovaným tunelem."
+  },
+  {
+    "id": "site-08-03",
+    "topicId": "site-okruh-08",
+    "theme": "Veřejné, soukromé sítě a VPN",
+    "question": "Zaručuje VPN úplnou anonymitu?",
+    "answer": "Ne. VPN sama o sobě nezaručuje anonymitu ani ochranu proti všem hrozbám."
+  },
+  {
+    "id": "site-09-01",
+    "topicId": "site-okruh-09",
+    "theme": "Referenční model ISO/OSI",
+    "question": "Kolik vrstev má model OSI?",
+    "answer": "Sedm: fyzická, linková, síťová, transportní, relační, prezentační a aplikační."
+  },
+  {
+    "id": "site-09-02",
+    "topicId": "site-okruh-09",
+    "theme": "Referenční model ISO/OSI",
+    "question": "K čemu slouží síťová vrstva OSI?",
+    "answer": "K logickému adresování a směrování paketů mezi sítěmi."
+  },
+  {
+    "id": "site-09-03",
+    "topicId": "site-okruh-09",
+    "theme": "Referenční model ISO/OSI",
+    "question": "Jakou úlohu má linková vrstva?",
+    "answer": "Přenáší rámce v rámci linky a řeší přístup k médiu a linkové adresování."
+  },
+  {
+    "id": "site-10-01",
+    "topicId": "site-okruh-10",
+    "theme": "Model TCP/IP",
+    "question": "Jaké vrstvy má běžný čtyřvrstvý model TCP/IP?",
+    "answer": "Vrstva síťového přístupu, internetová, transportní a aplikační."
+  },
+  {
+    "id": "site-10-02",
+    "topicId": "site-okruh-10",
+    "theme": "Model TCP/IP",
+    "question": "Který protokol zajišťuje adresování na internetové vrstvě?",
+    "answer": "Internet Protocol (IPv4 nebo IPv6)."
+  },
+  {
+    "id": "site-10-03",
+    "topicId": "site-okruh-10",
+    "theme": "Model TCP/IP",
+    "question": "Jak se TCP/IP liší od OSI?",
+    "answer": "TCP/IP je praktická sada protokolů a model obvykle se čtyřmi vrstvami; OSI je sedmivrstvý referenční model."
+  },
+  {
+    "id": "site-11-01",
+    "topicId": "site-okruh-11",
+    "theme": "Strukturovaná kabeláž",
+    "question": "Co je strukturovaná kabeláž?",
+    "answer": "Standardizovaný univerzální kabelážní systém budovy pro přenos dat a dalších služeb."
+  },
+  {
+    "id": "site-11-02",
+    "topicId": "site-okruh-11",
+    "theme": "Strukturovaná kabeláž",
+    "question": "Jaké části obsahuje horizontální kabeláž?",
+    "answer": "Typicky vedení od patrového rozvaděče k telekomunikační zásuvce pracovního místa."
+  },
+  {
+    "id": "site-11-03",
+    "topicId": "site-okruh-11",
+    "theme": "Strukturovaná kabeláž",
+    "question": "Co je patch panel?",
+    "answer": "Pasivní zakončovací prvek kabeláže v rozvaděči umožňující přehledné propojování."
+  },
+  {
+    "id": "site-12-01",
+    "topicId": "site-okruh-12",
+    "theme": "Synchronní a asynchronní přenos, kódování Manchester",
+    "question": "Co je synchronní přenos?",
+    "answer": "Odesílatel a příjemce používají časovou synchronizaci pro určení hranic datových jednotek."
+  },
+  {
+    "id": "site-12-02",
+    "topicId": "site-okruh-12",
+    "theme": "Synchronní a asynchronní přenos, kódování Manchester",
+    "question": "Co je asynchronní sériový přenos?",
+    "answer": "Jednotlivé znaky nebo rámce se přenášejí s pomocí start a stop bitů bez sdíleného nepřetržitého hodinového signálu."
+  },
+  {
+    "id": "site-12-03",
+    "topicId": "site-okruh-12",
+    "theme": "Synchronní a asynchronní přenos, kódování Manchester",
+    "question": "Jak funguje kódování Manchester?",
+    "answer": "Každý bit obsahuje přechod uprostřed bitového intervalu, který pomáhá synchronizaci."
+  },
+  {
+    "id": "site-13-01",
+    "topicId": "site-okruh-13",
+    "theme": "Metalická přenosová vedení",
+    "question": "Co je metalické přenosové médium?",
+    "answer": "Vedení přenášející elektrické signály po kovových vodičích."
+  },
+  {
+    "id": "site-13-02",
+    "topicId": "site-okruh-13",
+    "theme": "Metalická přenosová vedení",
+    "question": "Jaké příklady metalických vedení znáš?",
+    "answer": "Kroucená dvojlinka a koaxiální kabel."
+  },
+  {
+    "id": "site-13-03",
+    "topicId": "site-okruh-13",
+    "theme": "Metalická přenosová vedení",
+    "question": "Proč se používá diferenciální přenos po páru?",
+    "answer": "Pomáhá potlačit společné rušení zachycené na obou vodičích."
+  },
+  {
+    "id": "site-14-01",
+    "topicId": "site-okruh-14",
+    "theme": "Přenos v základním a modulovaném pásmu",
+    "question": "Co znamená přenos v základním pásmu (baseband)?",
+    "answer": "Signál se přenáší přímo v základním frekvenčním pásmu bez modulace na vysokofrekvenční nosnou."
+  },
+  {
+    "id": "site-14-02",
+    "topicId": "site-okruh-14",
+    "theme": "Přenos v základním a modulovaném pásmu",
+    "question": "Co je modulace?",
+    "answer": "Změna vlastnosti nosného signálu podle přenášené informace."
+  },
+  {
+    "id": "site-14-03",
+    "topicId": "site-okruh-14",
+    "theme": "Přenos v základním a modulovaném pásmu",
+    "question": "Jaké jsou příklady modulace?",
+    "answer": "Amplitudová, frekvenční a fázová modulace."
+  },
+  {
+    "id": "site-15-01",
+    "topicId": "site-okruh-15",
+    "theme": "Kroucená dvojlinka – typy a kategorie",
+    "question": "Jaký je rozdíl mezi U/UTP a stíněným kabelem?",
+    "answer": "U/UTP nemá dodatečné stínění, stíněné varianty používají fólii nebo opletení."
+  },
+  {
+    "id": "site-15-02",
+    "topicId": "site-okruh-15",
+    "theme": "Kroucená dvojlinka – typy a kategorie",
+    "question": "Co vyjadřuje kategorie kabelu, například Cat 6?",
+    "answer": "Normované přenosové parametry kabeláže pro určitá frekvenční pásma a použití."
+  },
+  {
+    "id": "site-15-03",
+    "topicId": "site-okruh-15",
+    "theme": "Kroucená dvojlinka – typy a kategorie",
+    "question": "Proč se vodiče ve dvojlince kroutí?",
+    "answer": "Kroucení omezuje elektromagnetické rušení a přeslechy mezi páry."
+  },
+  {
+    "id": "site-16-01",
+    "topicId": "site-okruh-16",
+    "theme": "Kroucení párů a přeslechy",
+    "question": "Co je přeslech (crosstalk)?",
+    "answer": "Nežádoucí vazba signálu z jednoho vedení do jiného."
+  },
+  {
+    "id": "site-16-02",
+    "topicId": "site-okruh-16",
+    "theme": "Kroucení párů a přeslechy",
+    "question": "Jak kroucení dvojlinky omezuje rušení?",
+    "answer": "Střídá polohu vodičů vůči zdrojům rušení, čímž se rušení částečně vyrovnává."
+  },
+  {
+    "id": "site-16-03",
+    "topicId": "site-okruh-16",
+    "theme": "Kroucení párů a přeslechy",
+    "question": "Proč mají jednotlivé páry různou délku zákrutu?",
+    "answer": "Pomáhá to omezovat přeslechy mezi páry."
+  },
+  {
+    "id": "site-17-01",
+    "topicId": "site-okruh-17",
+    "theme": "Konektory RJ-45 a zapojení vodičů",
+    "question": "Jaký konektor se běžně používá pro Ethernet po kroucené dvojlince?",
+    "answer": "Osmipolohový modulární konektor 8P8C, běžně označovaný RJ-45."
+  },
+  {
+    "id": "site-17-02",
+    "topicId": "site-okruh-17",
+    "theme": "Konektory RJ-45 a zapojení vodičů",
+    "question": "Jaké jsou běžné standardy pořadí vodičů?",
+    "answer": "T568A a T568B."
+  },
+  {
+    "id": "site-17-03",
+    "topicId": "site-okruh-17",
+    "theme": "Konektory RJ-45 a zapojení vodičů",
+    "question": "Co je přímý ethernetový kabel?",
+    "answer": "Kabel se stejným schématem zapojení na obou koncích."
+  },
+  {
+    "id": "site-18-01",
+    "topicId": "site-okruh-18",
+    "theme": "Impedance vedení",
+    "question": "Co je charakteristická impedance vedení?",
+    "answer": "Poměr napětí a proudu postupné vlny na vedení, daný jeho elektrickými parametry."
+  },
+  {
+    "id": "site-18-02",
+    "topicId": "site-okruh-18",
+    "theme": "Impedance vedení",
+    "question": "Jaká je typická charakteristická impedance ethernetové kroucené dvojlinky?",
+    "answer": "Přibližně 100 Ω."
+  },
+  {
+    "id": "site-18-03",
+    "topicId": "site-okruh-18",
+    "theme": "Impedance vedení",
+    "question": "Co způsobuje impedanční nepřizpůsobení?",
+    "answer": "Odrazy signálu, které mohou zhoršit kvalitu přenosu."
+  },
+  {
+    "id": "site-19-01",
+    "topicId": "site-okruh-19",
+    "theme": "Parametry a měření kroucené dvojlinky",
+    "question": "Co je útlum vedení?",
+    "answer": "Pokles úrovně signálu během šíření po kabelu."
+  },
+  {
+    "id": "site-19-02",
+    "topicId": "site-okruh-19",
+    "theme": "Parametry a měření kroucené dvojlinky",
+    "question": "Co znamená NEXT?",
+    "answer": "Near-End Crosstalk, přeslech měřený na blízkém konci vedení."
+  },
+  {
+    "id": "site-19-03",
+    "topicId": "site-okruh-19",
+    "theme": "Parametry a měření kroucené dvojlinky",
+    "question": "Co se kontroluje při certifikaci kabeláže?",
+    "answer": "Například délka, zapojení vodičů, útlum, přeslechy a návratový útlum."
+  },
+  {
+    "id": "site-20-01",
+    "topicId": "site-okruh-20",
+    "theme": "Maximální délka kabeláže TP",
+    "question": "Jaká je běžná maximální délka ethernetového kanálu po kroucené dvojlince?",
+    "answer": "100 m u běžných měděných ethernetových instalací podle příslušného standardu."
+  },
+  {
+    "id": "site-20-02",
+    "topicId": "site-okruh-20",
+    "theme": "Maximální délka kabeláže TP",
+    "question": "Jak se obvykle dělí 100m kanál strukturované kabeláže?",
+    "answer": "90 m trvalého vedení a celkem až 10 m propojovacích kabelů."
+  },
+  {
+    "id": "site-20-03",
+    "topicId": "site-okruh-20",
+    "theme": "Maximální délka kabeláže TP",
+    "question": "Platí 100 m pro každou ethernetovou technologii?",
+    "answer": "Ne. Konkrétní maximální délka závisí na technologii, kabelu a standardu."
+  },
+  {
+    "id": "site-21-01",
+    "topicId": "site-okruh-21",
+    "theme": "Odraz a lom světla",
+    "question": "Co je odraz světla?",
+    "answer": "Změna směru světla na rozhraní, při níž se světlo vrací do původního prostředí."
+  },
+  {
+    "id": "site-21-02",
+    "topicId": "site-okruh-21",
+    "theme": "Odraz a lom světla",
+    "question": "Co je lom světla?",
+    "answer": "Změna směru šíření světla při přechodu mezi prostředími s různým indexem lomu."
+  },
+  {
+    "id": "site-21-03",
+    "topicId": "site-okruh-21",
+    "theme": "Odraz a lom světla",
+    "question": "Co je úplný odraz?",
+    "answer": "Odraz při přechodu z opticky hustšího do řidšího prostředí, pokud úhel dopadu překročí mezní úhel."
+  },
+  {
+    "id": "site-22-01",
+    "topicId": "site-okruh-22",
+    "theme": "Stavba optického vlákna",
+    "question": "Z jakých hlavních částí se skládá optické vlákno?",
+    "answer": "Z jádra, optického pláště a ochranných vrstev."
+  },
+  {
+    "id": "site-22-02",
+    "topicId": "site-okruh-22",
+    "theme": "Stavba optického vlákna",
+    "question": "Jaký vztah mají indexy lomu jádra a pláště?",
+    "answer": "Index lomu jádra je vyšší než index lomu optického pláště."
+  },
+  {
+    "id": "site-22-03",
+    "topicId": "site-okruh-22",
+    "theme": "Stavba optického vlákna",
+    "question": "Jak se ve vlákně vede světlo?",
+    "answer": "Díky vedení světla na rozhraní jádra a pláště, popisovanému v jednoduchém modelu úplným odrazem."
+  },
+  {
+    "id": "site-23-01",
+    "topicId": "site-okruh-23",
+    "theme": "Jednovidová a mnohovidová optická vlákna",
+    "question": "Jaký je rozdíl mezi SM a MM vláknem?",
+    "answer": "Jednovidové vlákno vede jeden prostorový vid, mnohovidové více vidů."
+  },
+  {
+    "id": "site-23-02",
+    "topicId": "site-okruh-23",
+    "theme": "Jednovidová a mnohovidová optická vlákna",
+    "question": "Jaký je typický průměr jádra SM vlákna?",
+    "answer": "Přibližně 9 µm."
+  },
+  {
+    "id": "site-23-03",
+    "topicId": "site-okruh-23",
+    "theme": "Jednovidová a mnohovidová optická vlákna",
+    "question": "Jaké jsou běžné průměry jádra MM vlákna?",
+    "answer": "50 nebo 62,5 µm."
+  },
+  {
+    "id": "site-23-04",
+    "topicId": "site-okruh-23",
+    "theme": "Jednovidová a mnohovidová optická vlákna",
+    "question": "Které vlákno se běžně používá pro velmi dlouhé trasy?",
+    "answer": "Jednovidové (single-mode) vlákno."
+  },
+  {
+    "id": "site-24-01",
+    "topicId": "site-okruh-24",
+    "theme": "Útlum a ztráty v optických vláknech",
+    "question": "Co je optický útlum?",
+    "answer": "Snížení optického výkonu během šíření vláknem, obvykle vyjadřované v dB."
+  },
+  {
+    "id": "site-24-02",
+    "topicId": "site-okruh-24",
+    "theme": "Útlum a ztráty v optických vláknech",
+    "question": "Co může způsobovat ztráty optického signálu?",
+    "answer": "Absorpce, rozptyl, ohyby, nekvalitní svary a konektory."
+  },
+  {
+    "id": "site-24-03",
+    "topicId": "site-okruh-24",
+    "theme": "Útlum a ztráty v optických vláknech",
+    "question": "Proč je důležitý poloměr ohybu vlákna?",
+    "answer": "Příliš ostrý ohyb může zvýšit ztráty a poškodit vlákno."
+  },
+  {
+    "id": "site-25-01",
+    "topicId": "site-okruh-25",
+    "theme": "Mediakonvertory a optické moduly",
+    "question": "Co je mediakonvertor?",
+    "answer": "Zařízení převádějící signál mezi různými přenosovými médii, například metalikou a optikou."
+  },
+  {
+    "id": "site-25-02",
+    "topicId": "site-okruh-25",
+    "theme": "Mediakonvertory a optické moduly",
+    "question": "Co je SFP modul?",
+    "answer": "Výměnný transceiver pro síťová zařízení, často používaný pro optické nebo metalické připojení."
+  },
+  {
+    "id": "site-25-03",
+    "topicId": "site-okruh-25",
+    "theme": "Mediakonvertory a optické moduly",
+    "question": "Co znamená GBIC?",
+    "answer": "Gigabit Interface Converter, starší typ výměnného síťového transceiveru."
+  },
+  {
+    "id": "site-25-04",
+    "topicId": "site-okruh-25",
+    "theme": "Mediakonvertory a optické moduly",
+    "question": "Jak souvisí mini-GBIC a SFP?",
+    "answer": "Mini-GBIC je běžné označení kompaktního modulu SFP."
+  }
+]
