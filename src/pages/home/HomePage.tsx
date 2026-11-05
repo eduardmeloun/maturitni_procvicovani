@@ -1,4 +1,3 @@
-import type { AuthMode } from '../../features/auth'
 import { CallToActionSection } from './ui/CallToActionSection'
 import { FeatureSection } from './ui/FeatureSection'
 import { HomeHero } from './ui/HomeHero'
@@ -7,10 +6,9 @@ import { ProgressSection } from './ui/ProgressSection'
 import { TrustStrip } from './ui/TrustStrip'
 import styles from './HomePage.module.scss'
 
-type Props = { onAuth: (mode: AuthMode) => void }
+type Props = { onStart: () => void }
 
-export function HomePage({ onAuth }: Props) {
-  const startLearning = () => onAuth('register')
+export function HomePage({ onStart: startLearning }: Props) {
 
   return (
     <div className={styles.page}>

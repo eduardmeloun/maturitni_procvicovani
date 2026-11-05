@@ -3,7 +3,9 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "engines": { "node": ">=24.14.0" },
+  "engines": {
+    "node": ">=24.14.0"
+  },
   "scripts": {
     "dev": "node scripts/dev.mjs",
     "dev:client": "vite",
@@ -14,7 +16,8 @@
     "test": "node --test server/tests/*.test.mjs",
     "build": "tsc -b && vite build",
     "lint": "oxlint",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "start": "node server/start.mjs"
   },
   "dependencies": {
     "react": "^19.3.1",

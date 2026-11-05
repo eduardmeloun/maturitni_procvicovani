@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import { AuthModal, type AuthMode } from '../features/auth'
 import { ContactPage } from '../pages/contact'
 import { HomePage } from '../pages/home'
@@ -31,6 +31,7 @@ export default function App() {
     return () => { active = false; window.removeEventListener('popstate', pop); window.removeEventListener('session-expired', expired) }
   }, [])
   function navigate(next: Page) {
+    setError('')
     window.history.pushState({}, '', paths[next]); setPage(next); setAuthMode(null)
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }
@@ -38,9 +39,9 @@ export default function App() {
     window.history.pushState({}, '', mode === 'forgot' ? '/login' : mode === 'reset' ? '/reset-password' + window.location.hash : '/' + mode)
     setAuthMode(mode)
   }
-  function closeAuth() {
-    setAuthMode(null); window.history.replaceState({}, '', paths[page])
-  }
+  const closeAuth = useCallback(() => {
+    setAuthMode(null); window.history.replaceState({}, '', paths[page] + (page === 'flashcards' ? window.location.search : ''))
+  }, [page])
   async function logout() {
     try { await request('/auth/logout', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: '{}' }); setUser(null); navigate('home') }
     catch (error) { setError(error instanceof Error ? error.message : 'Odhlášení selhalo.') }
@@ -51,9 +52,9 @@ export default function App() {
     <main id="main-content">
       {error && <p role="alert">{error}</p>}
       {loading ? <p role="status">Načítám účet…</p> : protectedPage && !user ? <section><h1>Přihlášení je potřeba</h1><button onClick={() => openAuth('login')}>Přihlásit se</button></section> :
-        page === 'home' ? <HomePage onAuth={openAuth} /> : page === 'contact' ? <ContactPage /> : page === 'flashcards' ? <StudyPage /> : <StatsPage key={page + (user?.id || "guest")} page={page} user={user} />}
+        page === 'home' ? <HomePage onStart={() => user ? navigate('flashcards') : openAuth('register')} /> : page === 'contact' ? <ContactPage /> : page === 'flashcards' ? <StudyPage /> : <StatsPage key={page + (user?.id || "guest")} page={page} user={user} />}
     </main>
     <SiteFooter onNavigate={navigate} />
-    {authMode && <AuthModal key={authMode} mode={authMode} onModeChange={openAuth} onClose={closeAuth} onAuthenticated={setUser} />}
+    {authMode && <AuthModal key={authMode} mode={authMode} onModeChange={openAuth} onClose={closeAuth} onAuthenticated={value => { setUser(value); setError('') }} />}
   </div>
 }

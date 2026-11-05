@@ -37,8 +37,8 @@ export function createAuth(db, { allowedOrigin, sendReset, rateLimit, send, read
     for (const [key, value] of limits) if (value.until < now) limits.delete(key);
     const ip = req.socket.remoteAddress;
     const limit = limits.get(ip) || { until: now + 900000, count: 0 };
-    if (limit.count >= rateLimit || (!limits.has(ip) && limits.size >= 10000)) fail(429, 'Příliš mnoho pokusů. Zkus to za 15 minut.');
-    limit.count++; limits.set(ip, limit);
+    if (!path.endsWith('/logout') && (limit.count >= rateLimit || (!limits.has(ip) && limits.size >= 10000))) fail(429, 'Příliš mnoho pokusů. Zkus to za 15 minut.');
+    if (!path.endsWith('/logout')) { limit.count++; limits.set(ip, limit); }
     const body = await readJson(req);
     db.prepare('DELETE FROM password_resets WHERE expires_at<=?').run(new Date().toISOString());
     db.prepare('DELETE FROM sessions WHERE expires_at<=?').run(new Date().toISOString());

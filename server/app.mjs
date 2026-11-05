@@ -1,4 +1,5 @@
 import { createServer } from 'node:http';
+import { createStaticHandler } from './static.mjs';
 import { createAuth } from './auth.mjs';
 import { getSessionUser } from './session.mjs';
 import { transaction } from './database.mjs';
@@ -22,12 +23,18 @@ async function readJson(req) {
 }
 export const studyDay = (date = new Date()) => new Intl.DateTimeFormat('sv-SE', { timeZone: 'Europe/Prague' }).format(date);
 
-export function createApp(db, { allowedOrigin = 'http://localhost:5173', sendReset, rateLimit = 20 } = {}) {
+export function createApp(db, { allowedOrigin = 'http://localhost:5173', sendReset, rateLimit = 20, staticDirectory } = {}) {
   const auth = createAuth(db, { allowedOrigin, sendReset, rateLimit, send, readJson, HttpError });
+  const serveStatic = staticDirectory ? createStaticHandler(staticDirectory) : null;
   return createServer(async (req, res) => {
+    res.setHeader('X-Content-Type-Options', 'nosniff');
+    res.setHeader('Referrer-Policy', 'no-referrer');
+    res.setHeader('X-Frame-Options', 'DENY');
+    res.setHeader('Content-Security-Policy', "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self'; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'");
     try {
       const url = new URL(req.url, 'http://localhost');
       const path = url.pathname;
+      if (serveStatic && path !== '/api' && !path.startsWith('/api/')) return await serveStatic(req, res, url);
       if (req.method === 'GET' && path === '/api/health') {
         db.prepare('SELECT 1').get();
         return send(res, 200, { status: 'ok', database: 'ok' });

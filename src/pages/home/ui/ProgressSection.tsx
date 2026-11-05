@@ -6,7 +6,7 @@ export function ProgressSection({ onStart }: { onStart: () => void }) {
     <section className={styles.progressSection}>
       <div className={styles.progressArt} aria-hidden="true">
         <div className={styles.progressCard}>
-          <div className={styles.progressHeader}><span className={styles.progressBadge}><Icon name="chart" size={17} /></span><span>Tvoje příprava</span><span className={styles.liveDot} /></div>
+          <div className={styles.progressHeader}><span className={styles.progressBadge}><Icon name="chart" size={17} /></span><span>Ukázka přehledu přípravy</span><span className={styles.liveDot} /></div>
           <div className={styles.progressPercent}>68<span>%</span></div>
           <p>Jde ti to skvěle. Jen tak dál!</p>
           <div className={styles.progressBar}><span /></div>

@@ -4,7 +4,12 @@ export class ApiError extends Error {
   constructor(status: number, message: string) { super(message); this.status = status }
 }
 export async function request<T>(path: string, init?: RequestInit): Promise<T> {
-  const response = await fetch(`/api${path}`, { ...init, credentials: 'same-origin' })
+  let response: Response
+  try {
+    response = await fetch(`/api${path}`, { ...init, signal: init?.signal || AbortSignal.timeout(15000), credentials: 'same-origin' })
+  } catch {
+    throw new Error('Server není dostupný nebo požadavek trval příliš dlouho. Zkontroluj připojení a zkus to znovu.')
+  }
   if (!response.headers.get('content-type')?.includes('application/json')) throw new ApiError(response.status, 'API nevrátilo JSON. Zkontroluj spuštění serveru.')
   const data = await response.json()
   if (response.status === 401 && !path.startsWith('/auth/') && path !== '/me') window.dispatchEvent(new Event('session-expired'))

@@ -1,11 +1,8 @@
-﻿# Maturyta Formalyta
+# Maturyta Formalyta
 
-Týmová webová aplikace pro přípravu k maturitě IT na SPŠ Mladá Boleslav.
-React + TypeScript + Vite, Node.js HTTP API a SQLite (vestavěné node:sqlite; v Node 24 ještě experimentální).
+Studijní aplikace pro přípravu k maturitě: React + TypeScript + Vite, Node.js HTTP API a SQLite. Vyžaduje Node.js 24.14 nebo novější řady 24. SQLite je v této řadě Node stále experimentální.
 
-## Spuštění
-
-Potřebuješ Node.js 24.14 nebo novější řady 24 a npm. V kořeni tohoto projektu:
+## Lokální spuštění
 
 ```sh
 npm ci
@@ -13,67 +10,71 @@ npm run db:seed
 npm run dev
 ```
 
-Otevři http://localhost:5173. Jeden příkaz spouští frontend i API (127.0.0.1:3001).
-Pokud je port obsazený, ukonči předchozí server. Vite záměrně nepřepíná port kvůli kontrole Origin.
-SQLite soubor vznikne v data/app.sqlite. Není součástí Gitu. Seed lze bezpečně opakovat; přidá tři ukázkové předměty a původní síťové otázky, nepřepisuje existující obsah a nezakládá účty.
+Otevři http://localhost:5173. API běží na 127.0.0.1:3001. Vite používá pevný port kvůli ověřování Origin.
+Volitelně zkopíruj `.env.example` do `.env`. Server a databázové příkazy načítají `.env` automaticky; proměnné nastavené v prostředí mají přednost. `.env` ani osobní databáze nepatří do Gitu.
+Seed je opakovatelný, nepřepisuje existující data a nevytváří výchozí účet. Databáze vznikne v `data/app.sqlite`.
 
-## Příkazy
+## Funkce
 
-| Příkaz | Účel |
+- Úvodní stránka, kontakty, veřejný žebříček, profil a studijní kartičky s filtry předmětu, okruhu, tématu a stavu.
+- Registrace, přihlášení e-mailem nebo jménem, odhlášení a obnova hesla. Přímé URL `/login`, `/register`, `/reset-password` otevírají modal.
+- Unikátní jméno (3–32 ASCII písmen, číslic, teček, pomlček a podtržítek), e-mail a heslo o 8–128 znacích.
+- Hesla: scrypt s náhodnou solí. Relace: náhodný token v HttpOnly/SameSite cookie, v DB pouze jeho SHA-256 hash; v produkci Secure cookie.
+- Profil a kartičky vyžadují relaci, API izoluje data podle účtu. Výsledky a serverem vypočtené XP přetrvají obnovení stránky.
+- Síťově opakovaný pokus používá stejné UUID, aby se XP nepřičítaly dvakrát. API chyby 4xx uvolní ovládání filtrů; při neurčité síťové chybě lze stejný pokus zopakovat.
+- Profil, žebříček i přehled žebříčku na úvodu používají skutečná data. Grafika přípravy na úvodu je označená ukázka.
+
+## Obnova hesla
+
+Odkaz platí 30 minut a je jednorázový. Nový odkaz ruší předchozí; změna hesla ruší všechny relace účtu.
+Lokálně se odkaz vypisuje do terminálu API. V produkci jsou povinné `RESET_WEBHOOK_URL` a `RESET_WEBHOOK_SECRET`.
+Vlastní e-mailová služba musí přijmout HTTPS POST s JSON `{ email, url }`, ověřit hlavičku `Authorization: Bearer <secret>`, doručit e-mail a vrátit úspěšný HTTP status. Odesílání má časový limit 10 sekund. Token se nevrací z veřejného API ani neukládá v otevřeném tvaru do databáze.
+Auth zápisy vyžadují shodný Origin a mají limit 20 požadavků na IP za 15 minut. Odhlášení zůstává dostupné i po vyčerpání limitu. Limity jsou v paměti jednoho procesu; za proxy používají IP proxy, nikoliv nedůvěryhodné X-Forwarded-For. Pro větší provoz nastav limitování také na důvěryhodné reverzní proxy.
+
+## Produkční spuštění
+
+1. Zajisti trvalý zapisovatelný disk pro SQLite a pravidelné zálohy.
+2. Nastav `APP_ORIGIN` na přesný veřejný HTTPS origin bez koncového lomítka, `RESET_WEBHOOK_URL` a `RESET_WEBHOOK_SECRET` pro skutečné doručování e-mailů.
+3. Nainstaluj závislosti a sestav aplikaci:
+
+```sh
+npm ci
+npm run db:seed
+npm run build
+npm start
+```
+
+`npm start` nastavuje produkční režim. Jeden Node server obsluhuje API, sestavený frontend z `dist` i přímé odkazy na podstránky. Migrace databáze běží automaticky při startu. Chybějící build nebo neplatná produkční konfigurace zastaví start s chybou.
+Před Node server postav HTTPS reverzní proxy (např. Caddy/nginx), která přeposílá web i API na `127.0.0.1:3001`. Backend sám TLS neukončuje. `HOST` a `PORT` lze změnit podle hostingu.
+Statické soubory mají správné MIME typy, verzované assets dlouhou cache a HTML vyžaduje ověření změn. Server neposkytuje `.env`, zdrojové soubory ani databázi. Nastavuje CSP, ochranu proti vložení do rámce a no-referrer kvůli citlivým odkazům.
+`npm run preview` je pouze Vite náhled a neposkytuje API.
+
+## Konfigurace
+
+| Proměnná | Význam |
 | --- | --- |
-| npm run dev | Frontend i backend s obnovou při změnách |
-| npm run dev:client | Pouze Vite |
-| npm run dev:server | Pouze API s automatickým restartem |
-| npm run db:migrate | Aplikace nových SQL migrací |
-| npm run db:seed | Migrace a opakovatelné ukázkové údaje |
-| npm test | Integrační testy HTTP API a izolované SQLite |
-| npm run build | TypeScript kontrola a sestavení frontendu do dist |
-| npm run start:server | API bez sledování změn |
+| APP_ORIGIN | Povolený origin zápisů; lokálně http://localhost:5173, produkčně povinný HTTPS origin |
+| DATABASE_PATH | SQLite soubor, výchozí data/app.sqlite |
+| HOST | Adresa serveru, výchozí 127.0.0.1 |
+| PORT | Port API/produkčního webu, výchozí 3001; lokálně při změně uprav Vite proxy |
+| RESET_WEBHOOK_URL | HTTPS endpoint vlastní služby pro odesílání obnovovacích e-mailů |
+| RESET_WEBHOOK_SECRET | Sdílený tajný klíč e-mailové služby |
+
+## Příkazy a ověření
+
+- `npm run dev`: frontend a API s automatickým obnovením.
+- `npm run db:migrate` / `npm run db:seed`: migrace / doplnění studijních dat.
+- `npm test`: izolované integrační testy účtů, pokroku, migrací/seedu a produkčního serveru.
+- `npm run lint` a `npm run build`: kontrola kódu a sestavení.
+- `npm start`: produkční server. `npm run start:server`: API podle nastaveného NODE_ENV.
+
+## Obsah a kontakty před veřejným spuštěním
+
+Řada původních síťových otázek má dosud text „Správná odpověď zatím není doplněna.“. Je potřeba odborně doplnit a zkontrolovat studijní odpovědi; technické testy jejich správnost neověřují.
+Kontaktní formulář otevírá e-mailovou aplikaci přes mailto; zprávu musí uživatel odeslat v ní. Před veřejným použitím ověř skutečnou dostupnost uvedené kontaktní schránky. Kontakty nejsou automatické serverové odesílání.
+Pro veřejný provoz nastav a ověř skutečnou e-mailovou službu, HTTPS a zálohování. Repo neobsahuje přístupové údaje k hostingu ani poštovní službě.
 
 ## Pro tým
 
-Dohoda dat, tabulky, seznam endpointů, příklady klienta a napojení účtů: [docs/TEAM.md](docs/TEAM.md).
-
-- src/lib/contracts.ts: společné typy dat.
-- src/lib/api.ts: společný klient, předává cookie a zpracovává chyby.
-- src/app/App.tsx: společná navigace, stav účtu a ochrana stránek.
-- server/migrations: verzované SQL schéma.
-- server/database.mjs: připojení, migrace, transakce, seed.
-- server/session.mjs: vytváření, ověření a rušení relací pro budoucí auth modul.
-- server/app.mjs: API a ukládání pokroku.
-
-Hotový je technický základ, nikoliv finální stránky, přihlašování a statistiky. Bez auth modulu vrací chráněné API 401. Manrope je zatím pouze preferovaný font v CSS s lokálním fallbackem; jeho skutečné fontové soubory dodá autor vzhledu.
-
-## Konfigurace a nasazení
-
-Proměnné prostředí backendu (nastavují se v shellu nebo hostingu; .env se automaticky nenačítá):
-
-- DATABASE_PATH: SQLite cesta; výchozí data/app.sqlite v projektu.
-- HOST: výchozí 127.0.0.1.
-- PORT: výchozí 3001. Při změně uprav i Vite proxy.
-- APP_ORIGIN: výchozí http://localhost:5173, přesný povolený origin zápisů.
-
-Např. v PowerShellu: `$env:APP_ORIGIN = 'https://vase-domena.cz'`.
-Veřejné nasazení vyžaduje trvalý disk, HTTPS, obsluhu dist a proxy /api; podrobnosti v docs/TEAM.md. npm run preview slouží jen ke kontrole statického buildu, neposkytuje backend.
-
-## Uživatelské účty
-
-Registrace a přihlášení jsou v modalu se záložkami, dostupném také přes `/register` a `/login`.
-Přihlášení přijímá e-mail nebo uživatelské jméno. Registrace vyžaduje unikátní jméno (3–32 ASCII písmen, číslic, teček, pomlček nebo podtržítek), e-mail a dvakrát heslo o 8–128 znacích.
-Hesla jsou uložená pomocí scrypt s náhodnou solí. Náhodné relace mají HttpOnly/SameSite cookie a v databázi pouze SHA-256 hash tokenu; v produkci také Secure.
-Profil a kartičky vyžadují relaci na klientovi i serveru. Žebříček a kontakty jsou veřejné.
-Výsledky kartiček se ukládají na server pod účtem, včetně opakovatelných požadavků při síťové chybě.
-Statistiky používají skutečnou historii pokusů. Původní otázky z větve vrata přidá `npm run db:seed`; řada z nich má dosud nedoplněné odpovědi z původních dat.
-
-### Obnova hesla
-
-V přihlašovacím modalu zvol Zapomenuté heslo. Odkaz platí 30 minut, je jednorázový a nový odkaz ruší předchozí.
-V lokálním vývoji se odkaz vypíše pouze v terminálu API serveru. V produkci nastav `NODE_ENV=production`, `APP_ORIGIN`, `RESET_WEBHOOK_URL` a `RESET_WEBHOOK_SECRET`.
-Webhook pro vlastní e-mailovou službu přijímá JSON `{ email, url }` a hlavičku `Authorization: Bearer <secret>`; musí odeslat zprávu a vrátit úspěšný HTTP status.
-Bez nastaveného doručování vrací produkční obnova 503. Token není vracen z API ani uložený v otevřeném tvaru v DB.
-Po změně hesla se zruší všechny relace účtu. Auth zápisy vyžadují shodný Origin a mají limit 20 požadavků na IP za 15 minut (paměť procesu; za proxy se sdílí IP proxy).
-
-## Sjednocení větví
-
-Větve androjd, george, meloun, myghajlo, nastrel a vrata sdílí integrovaný stav, aby šly vzájemně sloučit bez konfliktů. Historie původních modulů zůstává zachovaná. Větev main se při této integraci nemění.
-Pro nové změny používejte aktuální společný základ a oddělené soubory funkcí. Před sloučením spusťte `npm test`, `npm run lint` a `npm run build`.
+Rozhraní API a vlastnictví modulů: [docs/TEAM.md](docs/TEAM.md). Veřejné stránky jsou v `src/pages`, účty, studium a statistiky v `src/features`; společná navigace a ochrana stránek v `src/app/App.tsx`.
+Integraci a úpravy vzhledu připravuje `nastrel`; ověřený stav se slučuje do `main`. Před každým mergem spusť testy, lint a build. Lokální data a složku DOKUMENTACE lze zachovat odděleně od verzovaného školního návrhu ve složce Skupinova prace 3. rocnik.

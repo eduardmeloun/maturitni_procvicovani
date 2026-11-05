@@ -1,3 +1,4 @@
+import './config.mjs';
 import { openDatabase, seedDatabase } from './database.mjs';
 import { seedStudyDatabase } from './study-seed.mjs';
 const db = openDatabase();

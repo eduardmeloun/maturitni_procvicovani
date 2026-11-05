@@ -1,3 +1,4 @@
+import styles from './Stats.module.scss'
 import { useEffect, useState } from 'react'
 import { api, request } from '../../lib/api'
 import type { User } from '../../lib/contracts'
@@ -33,7 +34,8 @@ export function StatsPage({ page, user }: { page: 'profile' | 'leaderboard'; use
     load().catch(error => { if (active) setError(error.message) })
     return () => { active = false }
   }, [page, user])
-  if (error) return <p role="alert">{error}</p>
-  if (page === 'profile') return profile ? <ProfileView user={profile} /> : <p role="status">Načítám profil…</p>
-  return board ? <LeaderboardView data={board} /> : <p role="status">Načítám žebříček…</p>
+  if (error || (page === 'profile' ? !profile : !board)) return <section className={styles.page}><div className={styles.container}><div className={styles.panel}>
+    {error ? <><p role="alert">{error}</p><button onClick={() => window.location.reload()}>Zkusit znovu</button></> : <p role="status">Načítám {page === 'profile' ? 'profil' : 'žebříček'}…</p>}
+  </div></div></section>
+  return page === 'profile' ? <ProfileView user={profile!} /> : <LeaderboardView data={board!} />
 }

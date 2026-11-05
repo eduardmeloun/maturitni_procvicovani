@@ -74,8 +74,9 @@ GET /api/leaderboard je veřejný a vrací id, name, xpAllTime a xpThisMonth vyp
 
 Neměň aplikovanou 001_initial.sql. Další migraci přidej jako 003_nazev.sql atd.; čísla si domluvte, dva soubory nesmějí mít stejné číslo. Migrace se aplikují automaticky při startu serveru a evidují se v migrations. Schéma, seed a testy patří do Gitu; data/app.sqlite a osobní data ne.
 
-Pracovní větve sdílejí společný integrovaný základ; main zůstala beze změny. Před mergem: npm test a npm run build. Finální společný scénář: založení účtu → přihlášení → hodnocení kartičky → obnovení stránky → správný vlastní pokrok a statistiky.
+Pracovní větve sdílejí společný integrovaný základ; ověřená integrace se slučuje do main. Před mergem: npm test a npm run build. Finální společný scénář: založení účtu → přihlášení → hodnocení kartičky → obnovení stránky → správný vlastní pokrok a statistiky.
 
 ## Produkční provoz
 
-Tato branch připravuje lokální základ, ne veřejné nasazení. Pro produkci je nutný Node server s trvalým zapisovatelným diskem, HTTPS reverse proxy a zálohování SQLite. Frontend dist hostuj pod stejným originem, /api přeposílej na Node a ostatní URL přepisuj na index.html. Server sám statické soubory neobsluhuje. Nastav APP_ORIGIN na přesný veřejný origin. Nepoužívej databázi na pomíjivém disku serverless hostingu; pro více replik zvolte sdílenou databázi.
+`npm run build` a `npm start` spouštějí společný server API a frontendu. Server načítá `.env`, ověřuje produkční konfiguraci a obsluhuje přímé odkazy na známé podstránky. HTTPS terminaci zajišťuje reverzní proxy. APP_ORIGIN musí být přesný veřejný HTTPS origin; RESET_WEBHOOK_URL a RESET_WEBHOOK_SECRET nastavují doručování obnovy hesla.
+SQLite potřebuje trvalý disk a zálohování. Více replik vyžaduje změnu databázové a limitovací architektury. Postup spuštění, omezení původních studijních dat a kontaktního formuláře popisuje README.

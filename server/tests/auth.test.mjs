@@ -85,4 +85,5 @@ test('Accounts: rate limiting and malformed requests', async t => {
   assert.equal((await post('login', {})).status, 400);
   assert.equal((await post('forgot-password', { email: 123 })).status, 400);
   assert.equal((await post('login', {})).status, 429);
+  assert.equal((await post('logout', {})).status, 200);
 });

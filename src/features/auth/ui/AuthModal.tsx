@@ -72,11 +72,11 @@ export function AuthModal({ mode, onModeChange, onClose, onAuthenticated }: Prop
       className={styles.backdrop}
       role="presentation"
       onMouseDown={(event) => {
-        if (event.target === event.currentTarget) onClose()
+        if (!busy && event.target === event.currentTarget) onClose()
       }}
     >
       <section ref={dialog} className={styles.dialog} role="dialog" aria-modal="true" aria-labelledby="auth-title">
-        <button className={styles.close} type="button" aria-label="Zavřít okno" onClick={onClose}>
+        <button className={styles.close} disabled={busy} type="button" aria-label="Zavřít okno" onClick={onClose}>
           <Icon name="close" />
         </button>
         <span className={styles.icon}><Icon name="cap" size={25} /></span>
@@ -84,10 +84,10 @@ export function AuthModal({ mode, onModeChange, onClose, onAuthenticated }: Prop
         <h2 id="auth-title">{isForgot || isReset ? 'Obnova hesla' : isRegister ? 'Vytvořit účet' : 'Vítej zpět!'}</h2>
 
         <div className={styles.tabs} role="tablist" aria-label="Přihlášení nebo registrace">
-          <button role="tab" aria-selected={!isRegister} className={!isRegister ? styles.selected : ''} onClick={() => { onModeChange('login'); setSubmitted(false) }}>
+          <button disabled={busy} role="tab" aria-selected={!isRegister} className={!isRegister ? styles.selected : ''} onClick={() => { onModeChange('login'); setSubmitted(false) }}>
             Přihlášení
           </button>
-          <button role="tab" aria-selected={isRegister} className={isRegister ? styles.selected : ''} onClick={() => { onModeChange('register'); setSubmitted(false) }}>
+          <button disabled={busy} role="tab" aria-selected={isRegister} className={isRegister ? styles.selected : ''} onClick={() => { onModeChange('register'); setSubmitted(false) }}>
             Registrace
           </button>
         </div>
