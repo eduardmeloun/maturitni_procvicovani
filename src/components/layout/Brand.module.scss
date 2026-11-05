@@ -1,0 +1,4 @@
+.brand { display: inline-flex; align-items: center; gap: 0.68rem; color: #12203a; text-decoration: none; flex: 0 0 auto; }
+.mark { display: grid; width: 42px; height: 42px; place-items: center; border-radius: 13px; color: #fff; background: linear-gradient(145deg, #3478f6, #1555d9); box-shadow: 0 5px 12px rgba(37, 99, 235, .2); }
+.name { display: flex; flex-direction: column; font-size: 1rem; font-weight: 800; line-height: 1.03; letter-spacing: -.045em; }
+.name span { color: #2563eb; }
