@@ -1,0 +1,258 @@
+<<<<<<< HEAD
+header { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 22px max(24px, calc((100vw - 1120px) / 2)); background: white; border-bottom: 1px solid var(--border); }
+.brand { font-weight: 800; text-decoration: none; line-height: 1.2; font-size: 22px; }
+.brand span { display: block; color: #1e293b; }
+nav { display: flex; flex-wrap: wrap; gap: 8px; }
+nav a { padding: 9px 12px; border-radius: 8px; text-decoration: none; font-size: 14px; color: #475569; }
+nav a[aria-current] { background: #eff6ff; color: var(--primary); }
+main { max-width: 1168px; padding: 64px 24px; margin: auto; min-height: calc(100vh - 170px); }
+h1 { font-size: clamp(30px, 4vw, 48px); line-height: 1.15; max-width: 800px; letter-spacing: -1.5px; margin: 16px 0 24px; }
+h2 { font-size: 24px; } h3 { margin: 12px 0; } p { line-height: 1.7; }
+.intro { max-width: 720px; color: #64748b; font-size: 18px; }
+.eyebrow { font-size: 11px; letter-spacing: 1.5px; font-weight: 700; color: var(--primary); }
+.connection { margin: 32px 0 48px; border: 1px solid #bfdbfe; border-radius: 12px; padding: 20px; background: #eff6ff; }
+.grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.panel { background: white; border: 1px solid var(--border); padding: 26px; border-radius: 14px; }
+.panel p { color: #64748b; }
+footer { border-top: 1px solid var(--border); padding: 24px; text-align: center; color: #64748b; font-size: 13px; }
+@media (max-width: 760px) { header { align-items: flex-start; flex-direction: column; padding: 20px; } main { padding-top: 36px; } .grid { grid-template-columns: 1fr; } nav { gap: 2px; } }
+=======
+
+/* FLASHCARDS – MATURYTA FORMALYTA */
+
+.fc-page {
+    min-height: 100vh;
+    background: #d3d3d3;
+    color: #1e293b;
+    font-family: "Manrope", sans-serif;
+    padding: 40px 30px;
+  }
+  
+  .fc-heading {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  
+  .fc-heading h1 {
+    font-size: 34px;
+    margin-bottom: 10px;
+  }
+  
+  .fc-heading p {
+    color: #475569;
+  }
+  
+  .fc-stats {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 30px;
+  }
+  
+  .fc-stats div {
+    background: white;
+    padding: 15px 25px;
+    border-radius: 12px;
+  }
+  
+  .fc-layout {
+    display: grid;
+    grid-template-columns: 240px minmax(0, 1fr) 240px;
+    gap: 25px;
+    max-width: 1400px;
+    margin: auto;
+  }
+  
+  .fc-panel {
+    background: #f1f1f1;
+    padding: 20px;
+    border-radius: 20px;
+    height: fit-content;
+  }
+  
+  .fc-panel h2 {
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .fc-option {
+    display: block;
+    width: 100%;
+    background: white;
+    color: #1e293b;
+    border: 2px solid #cbd5e1;
+    border-radius: 30px;
+    padding: 14px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 15px;
+    font-family: inherit;
+    transition: 0.2s;
+  }
+  
+  .fc-option:hover {
+    background: #dbeafe;
+    border-color: #326be6;
+  }
+  
+  .fc-option.active {
+    background: #326be6;
+    color: white;
+    border-color: #326be6;
+  }
+  
+  .fc-center {
+    min-width: 0;
+    text-align: center;
+  }
+  
+  .fc-filters {
+    margin-bottom: 20px;
+  }
+  
+  .fc-filters label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: 600;
+  }
+  
+  .fc-filters select {
+    width: 100%;
+    max-width: 300px;
+    padding: 12px;
+    border: 1px solid #cbd5e1;
+    border-radius: 10px;
+    font-family: inherit;
+  }
+  
+  .fc-card {
+    background: #ffffff;
+    border-radius: 25px;
+    padding: 35px;
+    min-height: 320px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    box-shadow: 0 5px 20px #00000012;
+  }
+  
+  .fc-counter {
+    color: #64748b;
+    font-size: 14px;
+  }
+  
+  .fc-card h2 {
+    font-size: 26px;
+    color: #1e293b;
+  }
+  
+  .fc-card p {
+    font-size: 18px;
+    line-height: 1.6;
+  }
+  
+  .fc-card textarea {
+    width: 100%;
+    min-height: 85px;
+    resize: vertical;
+    padding: 15px;
+    border: 2px solid #cbd5e1;
+    border-radius: 12px;
+    font-family: inherit;
+    font-size: 15px;
+  }
+  
+  .fc-primary,
+  .fc-next {
+    background: #326be6;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    padding: 13px 25px;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 16px;
+  }
+  
+  .fc-primary:hover,
+  .fc-next:hover {
+    background: #2457c5;
+  }
+  
+  .fc-actions {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 25px;
+  }
+  
+  .fc-actions button {
+    padding: 13px 22px;
+    border: none;
+    border-radius: 12px;
+    color: white;
+    font-family: inherit;
+    cursor: pointer;
+    font-size: 15px;
+  }
+  
+  .fc-know {
+    background: #16a34a;
+  }
+  
+  .fc-dontknow {
+    background: #dc2626;
+  }
+  
+  .fc-repeat {
+    background: #64748b;
+  }
+  
+  .fc-actions button:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+  }
+  
+  .fc-next {
+    margin-top: 20px;
+  }
+  
+  /* RESPONZIVITA */
+  
+  @media (max-width: 1000px) {
+    .fc-layout {
+      grid-template-columns: 1fr;
+    }
+  
+    .fc-panel {
+      width: 100%;
+    }
+  }
+  
+  @media (max-width: 600px) {
+    .fc-page {
+      padding: 20px 12px;
+    }
+  
+    .fc-heading h1 {
+      font-size: 26px;
+    }
+  
+    .fc-card {
+      padding: 22px 15px;
+    }
+  
+    .fc-card h2 {
+      font-size: 21px;
+    }
+  
+    .fc-stats div {
+      padding: 12px;
+    }
+  }
+  
+>>>>>>> a69c003031048ba0cf25590765255b8b4f7acae1

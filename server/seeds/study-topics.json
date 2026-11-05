@@ -1,0 +1,152 @@
+[
+  {
+    "id": "site-okruh-01",
+    "subjectId": "site",
+    "name": "Přepojování okruhů a paketů",
+    "position": 1
+  },
+  {
+    "id": "site-okruh-02",
+    "subjectId": "site",
+    "name": "Analogové a digitální sítě",
+    "position": 2
+  },
+  {
+    "id": "site-okruh-03",
+    "subjectId": "site",
+    "name": "Klient–server a peer-to-peer",
+    "position": 3
+  },
+  {
+    "id": "site-okruh-04",
+    "subjectId": "site",
+    "name": "Sběrnicová topologie",
+    "position": 4
+  },
+  {
+    "id": "site-okruh-05",
+    "subjectId": "site",
+    "name": "Hvězdicová topologie",
+    "position": 5
+  },
+  {
+    "id": "site-okruh-06",
+    "subjectId": "site",
+    "name": "Hvězda a strom",
+    "position": 6
+  },
+  {
+    "id": "site-okruh-07",
+    "subjectId": "site",
+    "name": "LAN, MAN a WAN",
+    "position": 7
+  },
+  {
+    "id": "site-okruh-08",
+    "subjectId": "site",
+    "name": "Veřejné, soukromé sítě a VPN",
+    "position": 8
+  },
+  {
+    "id": "site-okruh-09",
+    "subjectId": "site",
+    "name": "Referenční model ISO/OSI",
+    "position": 9
+  },
+  {
+    "id": "site-okruh-10",
+    "subjectId": "site",
+    "name": "Model TCP/IP",
+    "position": 10
+  },
+  {
+    "id": "site-okruh-11",
+    "subjectId": "site",
+    "name": "Strukturovaná kabeláž",
+    "position": 11
+  },
+  {
+    "id": "site-okruh-12",
+    "subjectId": "site",
+    "name": "Synchronní a asynchronní přenos, kódování Manchester",
+    "position": 12
+  },
+  {
+    "id": "site-okruh-13",
+    "subjectId": "site",
+    "name": "Metalická přenosová vedení",
+    "position": 13
+  },
+  {
+    "id": "site-okruh-14",
+    "subjectId": "site",
+    "name": "Přenos v základním a modulovaném pásmu",
+    "position": 14
+  },
+  {
+    "id": "site-okruh-15",
+    "subjectId": "site",
+    "name": "Kroucená dvojlinka – typy a kategorie",
+    "position": 15
+  },
+  {
+    "id": "site-okruh-16",
+    "subjectId": "site",
+    "name": "Kroucení párů a přeslechy",
+    "position": 16
+  },
+  {
+    "id": "site-okruh-17",
+    "subjectId": "site",
+    "name": "Konektory RJ-45 a zapojení vodičů",
+    "position": 17
+  },
+  {
+    "id": "site-okruh-18",
+    "subjectId": "site",
+    "name": "Impedance vedení",
+    "position": 18
+  },
+  {
+    "id": "site-okruh-19",
+    "subjectId": "site",
+    "name": "Parametry a měření kroucené dvojlinky",
+    "position": 19
+  },
+  {
+    "id": "site-okruh-20",
+    "subjectId": "site",
+    "name": "Maximální délka kabeláže TP",
+    "position": 20
+  },
+  {
+    "id": "site-okruh-21",
+    "subjectId": "site",
+    "name": "Odraz a lom světla",
+    "position": 21
+  },
+  {
+    "id": "site-okruh-22",
+    "subjectId": "site",
+    "name": "Stavba optického vlákna",
+    "position": 22
+  },
+  {
+    "id": "site-okruh-23",
+    "subjectId": "site",
+    "name": "Jednovidová a mnohovidová optická vlákna",
+    "position": 23
+  },
+  {
+    "id": "site-okruh-24",
+    "subjectId": "site",
+    "name": "Útlum a ztráty v optických vláknech",
+    "position": 24
+  },
+  {
+    "id": "site-okruh-25",
+    "subjectId": "site",
+    "name": "Mediakonvertory a optické moduly",
+    "position": 25
+  }
+]
