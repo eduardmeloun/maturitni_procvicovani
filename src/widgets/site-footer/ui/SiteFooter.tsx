@@ -1,4 +1,4 @@
-import { Brand, Icon } from '../../../shared/ui'
+import { Brand } from '../../../shared/ui'
 import type { Page } from '../../../shared/config/navigation'
 import styles from './SiteFooter.module.scss'
 
@@ -23,10 +23,6 @@ export function SiteFooter({ onNavigate }: Props) {
           <span className={styles.label}>Rychlé odkazy</span>
           <button type="button" onClick={goToFlashcards}>Jak to funguje</button>
           <button type="button" onClick={() => onNavigate('contact')}>Kontakty</button>
-        </div>
-        <div className={styles.note}>
-          <span className={styles.noteIcon}><Icon name="sparkle" size={18} /></span>
-          <span>Vytvořeno studenty,<br />pro studenty.</span>
         </div>
       </div>
       <div className={styles.bottom}>

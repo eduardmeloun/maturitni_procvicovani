@@ -17,8 +17,8 @@ export function HomePage({ onAuth }: Props) {
       <HomeHero onStart={startLearning} />
       <TrustStrip />
       <FeatureSection />
-      <ProgressSection onStart={startLearning} />
-      <LeaderboardSection onJoin={startLearning} />
+      <ProgressSection  />
+      <LeaderboardSection  />
       <CallToActionSection onStart={startLearning} />
     </div>
   )

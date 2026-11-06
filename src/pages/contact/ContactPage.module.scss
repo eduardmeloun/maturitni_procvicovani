@@ -8,7 +8,6 @@
 .breadcrumb { display: flex; align-items: center; gap: .45rem; margin-top: 1.5rem; color: #8d98aa; font-size: .78rem; }
 .breadcrumb svg { transform: rotate(-90deg); }
 .breadcrumb strong { color: #4a5870; font-weight: 700; }
-.heroSpark { position: absolute; top: 52px; right: 12%; color: #f0be61; font-size: 3.4rem; }
 .content { width: min(1080px, calc(100% - 48px)); margin: auto; padding: 5rem 0 4.5rem; display: grid; grid-template-columns: .8fr 1.2fr; align-items: start; gap: 5.2rem; }
 .infoColumn h2 { margin: .65rem 0 .8rem; color: #17233c; font-size: 2.45rem; line-height: 1.06; letter-spacing: -.07em; }
 .intro { max-width: 380px; color: #778398; font-size: .91rem; line-height: 1.75; }
@@ -44,4 +43,4 @@
 .bottomNote p { margin: 0; }
 .bottomNote strong { color: #53617a; }
 @media (max-width: 820px) { .content { gap: 2.5rem; } .heroInner { width: min(100% - 36px, 560px); } .content, .bottomNote { width: min(100% - 36px, 650px); } }
-@media (max-width: 680px) { .heroInner { padding: 3rem 0; } .heroSpark { top: 38px; right: 4%; font-size: 2.4rem; } .content { padding: 3.2rem 0; grid-template-columns: 1fr; gap: 2rem; } .infoColumn h2 { font-size: 2.2rem; } .formCard { padding: 1.25rem; } .formBottom { align-items: stretch; flex-direction: column; } .formBottom > span { order: 2; } .formBottom > button { width: 100%; } .bottomNote { margin-bottom: 3rem; text-align: left; } }
+@media (max-width: 680px) { .heroInner { padding: 3rem 0; }  .content { padding: 3.2rem 0; grid-template-columns: 1fr; gap: 2rem; } .infoColumn h2 { font-size: 2.2rem; } .formCard { padding: 1.25rem; } .formBottom { align-items: stretch; flex-direction: column; } .formBottom > span { order: 2; } .formBottom > button { width: 100%; } .bottomNote { margin-bottom: 3rem; text-align: left; } }

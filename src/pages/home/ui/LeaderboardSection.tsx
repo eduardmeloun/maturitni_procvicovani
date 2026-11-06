@@ -1,4 +1,4 @@
-import { Button, Icon } from '../../../shared/ui'
+import { Icon } from '../../../shared/ui'
 import styles from '../HomePage.module.scss'
 
 const rankings = [
@@ -6,14 +6,14 @@ const rankings = [
   { position: '02', initial: 'M', name: 'Matěj S.', streak: '3 dny v řadě', points: '1 140', color: 'avatarOrange' },
 ]
 
-export function LeaderboardSection({ onJoin }: { onJoin: () => void }) {
+export function LeaderboardSection() {
   return (
     <section className={styles.leaderboard} id="leaderboard">
       <div className={styles.leaderCopy}>
         <span className={styles.eyebrow}>Trocha zdravé motivace</span>
         <h2>Každý den o kousek<br /><span>blíž k cíli.</span></h2>
         <p>Uč se pravidelně, sbírej body a oslavuj každý malý úspěch. Maturita není sprint — ale nemusíš na to být sám.</p>
-        <Button onClick={onJoin}>Přidat se k učení <Icon name="arrow" size={17} /></Button>
+        
       </div>
       <div className={styles.rankCard}>
         <div className={styles.rankHeading}>
@@ -34,7 +34,7 @@ export function LeaderboardSection({ onJoin }: { onJoin: () => void }) {
           <span className={styles.rankName}>Teď jsi na řadě<small>Další můžeš být ty!</small></span>
           <span className={styles.rankArrow}><Icon name="arrow" size={16} /></span>
         </div>
-        <p className={styles.rankFoot}><Icon name="sparkle" size={15} /> Tvoje tempo, tvoje cesta.</p>
+        
       </div>
     </section>
   )

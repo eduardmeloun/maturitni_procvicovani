@@ -1,13 +1,13 @@
 import type { ReactNode, SVGProps } from 'react'
 
-export type IconName = 'cap' | 'arrow' | 'check' | 'book' | 'sparkle' | 'chart' | 'target' | 'clock' | 'mail' | 'phone' | 'pin' | 'send' | 'menu' | 'close' | 'chevron' | 'play' | 'shield' | 'users'
+export type IconName = 'cap' | 'arrow' | 'check' | 'book' | 'chart' | 'target' | 'clock' | 'mail' | 'phone' | 'pin' | 'send' | 'menu' | 'close' | 'chevron' | 'play' | 'shield' | 'users'
 
 const paths: Record<IconName, ReactNode> = {
   cap: <><path d="m2 10 10-5 10 5-10 5-10-5Z"/><path d="M6 12v5c3.5 2.5 8.5 2.5 12 0v-5M22 10v6"/></>,
   arrow: <><path d="M5 12h14M13 6l6 6-6 6"/></>,
   check: <path d="m5 12 4 4L19 6"/>,
   book: <><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v17H6.5A2.5 2.5 0 0 1 4 17.5z"/><path d="M4 17.5A2.5 2.5 0 0 1 6.5 15H20M8 7h8"/></>,
-  sparkle: <><path d="m12 3 1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8L12 3Z"/><path d="m19 14 .9 2.1L22 17l-2.1.9L19 20l-.9-2.1L16 17l2.1-.9L19 14Z"/></>,
+  
   chart: <><path d="M4 19V5M4 19h17"/><path d="m7 15 4-4 3 2 6-7"/></>,
   target: <><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></>,
   clock: <><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></>,

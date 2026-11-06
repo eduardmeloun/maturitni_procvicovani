@@ -9,7 +9,7 @@ export function CallToActionSection({ onStart }: { onStart: () => void }) {
       <h2>Maturita je velká věc.<br /><span>Příprava nemusí být.</span></h2>
       <p>Dej si první kartičku a uvidíš, že to půjde.</p>
       <Button onClick={onStart}>Jdu do toho <Icon name="arrow" size={18} /></Button>
-      <span className={styles.ctaStar}>✦</span><span className={styles.ctaDot} />
+      
     </section>
   )
 }

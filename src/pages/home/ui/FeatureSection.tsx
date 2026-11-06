@@ -20,7 +20,7 @@ export function FeatureSection() {
           <article className={styles.featureCard} key={feature.number}>
             <div className={`${styles.featureIcon} ${styles[feature.tone]}`}><Icon name={feature.icon} size={22} /></div>
             <span className={styles.featureNumber}>{feature.number}</span>
-            <h3>{feature.title}</h3><p>{feature.body}</p><span className={styles.featureLine} />
+            <h3>{feature.title}</h3><p>{feature.body}</p><span  />
           </article>
         ))}
       </div>

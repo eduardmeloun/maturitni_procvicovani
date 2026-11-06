@@ -26,7 +26,7 @@ export function ContactForm({ email }: { email: string }) {
     <div className={styles.formCard}>
       <div className={styles.formHeading}>
         <span className={styles.formIcon}><Icon name="send" size={20} /></span>
-        <div><h2>Napiš nám zprávu</h2><p>Chyba, nápad nebo jen ahoj? Sem s tím.</p></div>
+        <div><h2>Napiš nám zprávu</h2><p>Chyba, nápad? Sem s tím.</p></div>
       </div>
       {sent && (
         <div className={styles.notice} role="status">
