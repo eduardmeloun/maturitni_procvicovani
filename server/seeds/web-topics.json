@@ -1,0 +1,94 @@
+
+[
+    {
+      "id": "weby-okruh-06",
+      "subjectId": "weby",
+      "name": "Front-end, UI a UX",
+      "position": 6
+    },
+    {
+      "id": "weby-okruh-07",
+      "subjectId": "weby",
+      "name": "React",
+      "position": 7
+    },
+    {
+      "id": "weby-okruh-08",
+      "subjectId": "weby",
+      "name": "React Native",
+      "position": 8
+    },
+    {
+      "id": "weby-okruh-09",
+      "subjectId": "weby",
+      "name": "Electron",
+      "position": 9
+    },
+    {
+      "id": "weby-okruh-10",
+      "subjectId": "weby",
+      "name": "Backend, API a Node.js",
+      "position": 10
+    },
+    {
+      "id": "weby-okruh-11",
+      "subjectId": "weby",
+      "name": "Moduly a npm",
+      "position": 11
+    },
+    {
+      "id": "weby-okruh-12",
+      "subjectId": "weby",
+      "name": "Rozšíření do prohlížeče",
+      "position": 12
+    },
+    {
+      "id": "weby-okruh-13",
+      "subjectId": "weby",
+      "name": "Autentizace a autorizace",
+      "position": 13
+    },
+    {
+      "id": "weby-okruh-14",
+      "subjectId": "weby",
+      "name": "Databáze",
+      "position": 14
+    },
+    {
+      "id": "weby-okruh-15",
+      "subjectId": "weby",
+      "name": "Express.js",
+      "position": 15
+    },
+    {
+      "id": "weby-okruh-16",
+      "subjectId": "weby",
+      "name": "Socket.IO",
+      "position": 16
+    },
+    {
+      "id": "weby-okruh-17",
+      "subjectId": "weby",
+      "name": "Dokumentování aplikace a publikace",
+      "position": 17
+    },
+    {
+      "id": "weby-okruh-18",
+      "subjectId": "weby",
+      "name": "React Redux",
+      "position": 18
+    },
+    {
+      "id": "weby-okruh-19",
+      "subjectId": "weby",
+      "name": "React Router",
+      "position": 19
+    },
+    {
+      "id": "weby-okruh-20",
+      "subjectId": "weby",
+      "name": "Verzovací systémy",
+      "position": 20
+    }
+  ]
+  
