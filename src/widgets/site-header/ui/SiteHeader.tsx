@@ -31,8 +31,9 @@ export function SiteHeader({ page, onNavigate, onAuth, authenticated, onLogout }
           <button type="button" className={styles.navLink} onClick={() => { onNavigate('flashcards'); setMenuOpen(false) }}>Kartičky</button>
           <button type="button" className={styles.navLink} onClick={() => { onNavigate('leaderboard'); setMenuOpen(false) }}>Leaderboard</button>
           <button type="button" className={`${styles.navLink} ${page === 'contact' ? styles.active : ''}`} onClick={goToContact}>Kontakty</button>
+          {authenticated && <button type="button" className={styles.navLink} onClick={() => { onNavigate('profile'); setMenuOpen(false) }}>Profil</button>}
           <div className={styles.actions}>
-            {authenticated ? <><Button onClick={() => { onNavigate('profile'); setMenuOpen(false) }}>Profil</Button><Button variant="text" onClick={onLogout}>Odhl?sit se</Button></> : <>
+            {authenticated ? <Button variant="text" onClick={onLogout}>Odhlásit se</Button> : <>
             <Button variant="text" onClick={() => { onAuth('login'); setMenuOpen(false) }}>Přihlásit se</Button>
             <Button onClick={() => { onAuth('register'); setMenuOpen(false) }}>Vytvořit účet <Icon name="arrow" size={17} /></Button>
             </>}
