@@ -1,0 +1,263 @@
+
+[
+    {
+      "id": "programovani-01-001",
+      "topicId": "programovani-okruh-01",
+      "theme": "Okruh 1 – Algoritmizace a programování",
+      "question": "Co je algoritmus a jaké má vlastnosti?",
+      "answer": "Algoritmus je konečný, jednoznačný a proveditelný postup řešení úlohy. Má vstup, výstup a jednotlivé kroky."
+    },
+    {
+      "id": "programovani-01-002",
+      "topicId": "programovani-okruh-01",
+      "theme": "Okruh 1 – Algoritmizace a programování",
+      "question": "Jak posuzujeme efektivitu algoritmu?",
+      "answer": "Časovou a paměťovou složitostí; sledujeme, jak rostou nároky s velikostí vstupu, například O(n) nebo O(n²)."
+    },
+    {
+      "id": "programovani-01-003",
+      "topicId": "programovani-okruh-01",
+      "theme": "Okruh 1 – Algoritmizace a programování",
+      "question": "Jak lze algoritmus zapsat?",
+      "answer": "Slovním popisem, pseudokódem, vývojovým diagramem nebo zdrojovým kódem. Diagram je názorný, pseudokód nezávislý na jazyce."
+    },
+    {
+      "id": "programovani-01-004",
+      "topicId": "programovani-okruh-01",
+      "theme": "Okruh 1 – Algoritmizace a programování",
+      "question": "Jaký je rozdíl mezi vyššími a nižšími programovacími jazyky?",
+      "answer": "Nižší jazyky jsou blíže hardwaru (assembler); vyšší jazyky nabízejí abstrakce a snazší vývoj (TypeScript, Python)."
+    },
+    {
+      "id": "programovani-01-005",
+      "topicId": "programovani-okruh-01",
+      "theme": "Okruh 1 – Algoritmizace a programování",
+      "question": "Jaký je rozdíl mezi kompilací, interpretací a transpilací?",
+      "answer": "Kompilace překládá zdroj do cílového kódu, interpretace kód vykonává za běhu a transpilace převádí zdroj mezi jazyky podobné úrovně, např. TypeScript do JavaScriptu."
+    },
+    {
+      "id": "programovani-01-006",
+      "topicId": "programovani-okruh-01",
+      "theme": "Okruh 1 – Algoritmizace a programování",
+      "question": "Co je npm a k čemu slouží?",
+      "answer": "npm je správce balíčků pro ekosystém Node.js. Instaluje závislosti a spouští skripty z package.json; např. npm install a npm run dev."
+    },
+    {
+      "id": "programovani-01-007",
+      "topicId": "programovani-okruh-01",
+      "theme": "Okruh 1 – Algoritmizace a programování",
+      "question": "Co je Node.js a jaké má výhody a nevýhody?",
+      "answer": "Node.js je běhové prostředí JavaScriptu mimo prohlížeč, vhodné pro I/O a API. Výhodou je asynchronní model a npm, nevýhodou náročnější CPU výpočty v hlavním vlákně."
+    },
+    {
+      "id": "programovani-02-001",
+      "topicId": "programovani-okruh-02",
+      "theme": "Okruh 2 – VS Code a základy JavaScriptu a TypeScriptu",
+      "question": "Co nabízí Visual Studio Code?",
+      "answer": "Editor s rozšířeními, IntelliSense, integrovaným terminálem, debuggerem a Gitem; oproti robustním IDE bývá lehčí."
+    },
+    {
+      "id": "programovani-02-002",
+      "topicId": "programovani-okruh-02",
+      "theme": "Okruh 2 – VS Code a základy JavaScriptu a TypeScriptu",
+      "question": "Jaký jazyk je JavaScript a jaké frameworky používá?",
+      "answer": "JavaScript je dynamicky typovaný jazyk používaný v prohlížeči i na serveru. Příklady: React, Vue, Angular, Express."
+    },
+    {
+      "id": "programovani-02-003",
+      "topicId": "programovani-okruh-02",
+      "theme": "Okruh 2 – VS Code a základy JavaScriptu a TypeScriptu",
+      "question": "Co je TypeScript a jak souvisí s JavaScriptem?",
+      "answer": "TypeScript rozšiřuje JavaScript o statickou kontrolu typů; převádí se na JavaScript a pomáhá odhalovat chyby před spuštěním."
+    },
+    {
+      "id": "programovani-02-004",
+      "topicId": "programovani-okruh-02",
+      "theme": "Okruh 2 – VS Code a základy JavaScriptu a TypeScriptu",
+      "question": "Jaký je rozdíl mezi var, let a const?",
+      "answer": "var má funkční scope a hoisting; let a const blokový scope. const zakazuje nové přiřazení proměnné, nikoli mutaci objektu."
+    },
+    {
+      "id": "programovani-02-005",
+      "topicId": "programovani-okruh-02",
+      "theme": "Okruh 2 – VS Code a základy JavaScriptu a TypeScriptu",
+      "question": "Jaký je rozdíl mezi klasickou a arrow funkcí?",
+      "answer": "Klasická funkce má vlastní this podle volání; arrow funkce přebírá this z okolí. Např. const add = (a:number,b:number) => a+b."
+    },
+    {
+      "id": "programovani-02-006",
+      "topicId": "programovani-okruh-02",
+      "theme": "Okruh 2 – VS Code a základy JavaScriptu a TypeScriptu",
+      "question": "Jaké cykly se používají v JS/TS?",
+      "answer": "for, while, do...while, for...of pro hodnoty iterovatelného objektu a for...in pro klíče objektu."
+    },
+    {
+      "id": "programovani-02-007",
+      "topicId": "programovani-okruh-02",
+      "theme": "Okruh 2 – VS Code a základy JavaScriptu a TypeScriptu",
+      "question": "Jak funguje if a podmínkové operátory?",
+      "answer": "if provede blok při pravdivé podmínce, else alternativu. Používají se ===, !==, >, <, &&, || a !."
+    },
+    {
+      "id": "programovani-02-008",
+      "topicId": "programovani-okruh-02",
+      "theme": "Okruh 2 – VS Code a základy JavaScriptu a TypeScriptu",
+      "question": "Jaké jsou základní operátory v JS/TS?",
+      "answer": "Aritmetické + - * / %, porovnávací === !== > <, logické && || ! a přiřazovací = +=."
+    },
+    {
+      "id": "programovani-02-009",
+      "topicId": "programovani-okruh-02",
+      "theme": "Okruh 2 – VS Code a základy JavaScriptu a TypeScriptu",
+      "question": "Co znamená as v TypeScriptu?",
+      "answer": "Type assertion sdělí překladači předpokládaný typ, např. value as HTMLInputElement; neprovádí převod ani runtime ověření."
+    },
+    {
+      "id": "programovani-03-001",
+      "topicId": "programovani-okruh-03",
+      "theme": "Okruh 3 – Typy v TypeScriptu",
+      "question": "Jaké jsou primitivní typy v TypeScriptu?",
+      "answer": "string, number, boolean, bigint, symbol, undefined a null; pro zvláštní případy existují any, unknown, never a void."
+    },
+    {
+      "id": "programovani-03-002",
+      "topicId": "programovani-okruh-03",
+      "theme": "Okruh 3 – Typy v TypeScriptu",
+      "question": "Co je objektový literál a jeho typ?",
+      "answer": "Objektový literál je zápis např. {name:\"Eva\", age:18}; typ lze určit jako {name:string; age:number}. Na rozdíl od class nevyžaduje konstruktor."
+    },
+    {
+      "id": "programovani-03-003",
+      "topicId": "programovani-okruh-03",
+      "theme": "Okruh 3 – Typy v TypeScriptu",
+      "question": "Co je tuple a jak se liší od pole?",
+      "answer": "Tuple má definované typy a pozice prvků, např. [string, number]; pole number[] typicky obsahuje libovolný počet čísel."
+    },
+    {
+      "id": "programovani-03-004",
+      "topicId": "programovani-okruh-03",
+      "theme": "Okruh 3 – Typy v TypeScriptu",
+      "question": "Co je union type?",
+      "answer": "Sjednocení alternativních typů operátorem |, např. let id: string | number; hodnota smí být jedním z nich."
+    },
+    {
+      "id": "programovani-03-005",
+      "topicId": "programovani-okruh-03",
+      "theme": "Okruh 3 – Typy v TypeScriptu",
+      "question": "Co je intersection type?",
+      "answer": "Průnik typů pomocí &, např. type Admin = User & {role:string}; výsledná hodnota musí splnit oba typy."
+    },
+    {
+      "id": "programovani-03-006",
+      "topicId": "programovani-okruh-03",
+      "theme": "Okruh 3 – Typy v TypeScriptu",
+      "question": "Co je conditional type?",
+      "answer": "Typový výraz T extends U ? X : Y vybírá typ podle podmínky; používá se pro generické typové transformace."
+    },
+    {
+      "id": "programovani-03-007",
+      "topicId": "programovani-okruh-03",
+      "theme": "Okruh 3 – Typy v TypeScriptu",
+      "question": "Co je type guard?",
+      "answer": "Kontrola, která zužuje typ za běhu, např. typeof x === \"string\", x instanceof Date nebo vlastní funkce vracející x is User."
+    },
+    {
+      "id": "programovani-04-001",
+      "topicId": "programovani-okruh-04",
+      "theme": "Okruh 4 – Objektově orientované programování",
+      "question": "Co je class, extends a implements?",
+      "answer": "class definuje třídu; extends dědí z jiné třídy; implements kontroluje, zda třída splňuje rozhraní."
+    },
+    {
+      "id": "programovani-04-002",
+      "topicId": "programovani-okruh-04",
+      "theme": "Okruh 4 – Objektově orientované programování",
+      "question": "Co znamená public, private a protected?",
+      "answer": "public je přístupné odkudkoli, private jen uvnitř třídy, protected i v potomcích. TypeScript tyto modifikátory kontroluje typově."
+    },
+    {
+      "id": "programovani-04-003",
+      "topicId": "programovani-okruh-04",
+      "theme": "Okruh 4 – Objektově orientované programování",
+      "question": "Co znamenají readonly a static?",
+      "answer": "readonly brání opětovnému přiřazení vlastnosti v TS mimo povolenou inicializaci; static označuje člena patřícího třídě, ne instanci."
+    },
+    {
+      "id": "programovani-04-004",
+      "topicId": "programovani-okruh-04",
+      "theme": "Okruh 4 – Objektově orientované programování",
+      "question": "K čemu slouží getter a setter?",
+      "answer": "get čte vypočítanou či zapouzdřenou hodnotu, set kontroluje a mění hodnotu. Umožňují řízený přístup k vlastnostem."
+    },
+    {
+      "id": "programovani-04-005",
+      "topicId": "programovani-okruh-04",
+      "theme": "Okruh 4 – Objektově orientované programování",
+      "question": "K čemu slouží super?",
+      "answer": "super() volá konstruktor rodičovské třídy; super.metoda() volá rodičovskou implementaci metody."
+    },
+    {
+      "id": "programovani-04-006",
+      "topicId": "programovani-okruh-04",
+      "theme": "Okruh 4 – Objektově orientované programování",
+      "question": "Co je abstraktní třída a abstraktní metoda?",
+      "answer": "abstract class nelze přímo instanciovat; abstraktní metodu musí implementovat konkrétní potomek."
+    },
+    {
+      "id": "programovani-04-007",
+      "topicId": "programovani-okruh-04",
+      "theme": "Okruh 4 – Objektově orientované programování",
+      "question": "Jaký je rozdíl mezi parametrem a argumentem?",
+      "answer": "Parametr je proměnná v deklaraci funkce, argument je konkrétní hodnota předaná při volání."
+    },
+    {
+      "id": "programovani-05-001",
+      "topicId": "programovani-okruh-05",
+      "theme": "Okruh 5 – Interface v TypeScriptu",
+      "question": "Co je interface a k čemu slouží?",
+      "answer": "Interface popisuje požadovaný tvar objektu a smlouvu pro implementaci, např. interface User {name:string}. Pomáhá s kontrolou typů."
+    },
+    {
+      "id": "programovani-05-002",
+      "topicId": "programovani-okruh-05",
+      "theme": "Okruh 5 – Interface v TypeScriptu",
+      "question": "Jaký je rozdíl mezi type a interface?",
+      "answer": "Oba umí popsat objekty; interface podporuje slučování deklarací a extends, type navíc přímo pojmenuje union, tuple či podmínkové typy."
+    },
+    {
+      "id": "programovani-05-003",
+      "topicId": "programovani-okruh-05",
+      "theme": "Okruh 5 – Interface v TypeScriptu",
+      "question": "Jak se implementuje interface?",
+      "answer": "class User implements Person { constructor(public name:string) {} } musí splnit všechny požadované členy Person."
+    },
+    {
+      "id": "programovani-05-004",
+      "topicId": "programovani-okruh-05",
+      "theme": "Okruh 5 – Interface v TypeScriptu",
+      "question": "Co je přetížení metod/signatur?",
+      "answer": "Více signatur popisuje povolené kombinace parametrů a návratových typů, ale v JS/TS má metoda jednu implementaci."
+    },
+    {
+      "id": "programovani-05-005",
+      "topicId": "programovani-okruh-05",
+      "theme": "Okruh 5 – Interface v TypeScriptu",
+      "question": "Co jsou generika v interface?",
+      "answer": "Typové parametry umožní znovupoužitelný interface, např. interface Box<T> { value:T }."
+    },
+    {
+      "id": "programovani-05-006",
+      "topicId": "programovani-okruh-05",
+      "theme": "Okruh 5 – Interface v TypeScriptu",
+      "question": "Jak fungují get a set v interface?",
+      "answer": "Interface může deklarovat getter/setter signatury; implementace poskytuje odpovídající přístup k vlastnosti."
+    },
+    {
+      "id": "programovani-05-007",
+      "topicId": "programovani-okruh-05",
+      "theme": "Okruh 5 – Interface v TypeScriptu",
+      "question": "Jak rozšířit interface?",
+      "answer": "Pomocí extends, např. interface Employee extends Person { salary:number }; nový typ zahrne členy rodiče."
+    }
+  ]
+  
