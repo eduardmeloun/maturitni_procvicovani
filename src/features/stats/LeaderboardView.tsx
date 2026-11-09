@@ -37,6 +37,7 @@ export function LeaderboardView({ data }: { data: LeaderboardSummary }) {
       </div>
 
       <section className={styles.calendarPanel} aria-label={`Aktivita za ${monthLabel}`}>
+        <div className={styles.calendarHeading}><h2>Tvoje aktivita</h2><span className={styles.month}>{monthLabel}</span></div>
         <div className={styles.calendar}>
           {['Ne', 'Po', 'Út', 'St', 'Čt', 'Pá', 'So'].map(day => <span className={styles.weekday} key={day}>{day}</span>)}
           {Array.from({ length: monthOffset }, (_, i) => <span key={`blank-${i}`} aria-hidden="true" />)}
@@ -44,7 +45,6 @@ export function LeaderboardView({ data }: { data: LeaderboardSummary }) {
         </div>
         <div className={styles.calendarFooter}>
           <div className={styles.legend}><span><i className={styles.activeKey} />Aktivní den</span><span><i />Bez aktivity</span></div>
-          <span className={styles.month}>{monthLabel}</span>
         </div>
         {!current && <p className={styles.guestNote}>Po přihlášení tu uvidíš svoji studijní aktivitu.</p>}
       </section>
