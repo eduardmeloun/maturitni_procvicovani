@@ -1,3 +1,4 @@
+import { readFileSync, readdirSync } from 'node:fs';
 import { questions } from '../src/data/questions.js';
 import { transaction } from './database.mjs';
 
@@ -17,6 +18,23 @@ const additionalCards = [
 ];
 
 export function seedStudyDatabase(db) {
+  const directory = new URL('./seeds/', import.meta.url);
+  const files = readdirSync(directory).sort();
+  const load = suffix => files.filter(name => name.endsWith(suffix)).flatMap(name => {
+    const rows = JSON.parse(readFileSync(new URL(name, directory), 'utf8'));
+    if (!Array.isArray(rows)) throw new Error(`Seed ${name} musí obsahovat pole.`);
+    return rows;
+  });
+  const seedTopics = load('-topics.json');
+  const seedQuestions = load('-questions.json');
+  for (const [rows, fields] of [[seedTopics, ['id', 'subjectId', 'name']], [seedQuestions, ['id', 'topicId', 'theme', 'question', 'answer']]]) {
+    const ids = new Set();
+    for (const row of rows) {
+      if (!row || fields.some(key => typeof row[key] !== 'string' || !row[key].trim())) throw new Error('Seed obsahuje neplatný nebo prázdný údaj.');
+      if (ids.has(row.id)) throw new Error(`Duplicitní ID v seedech: ${row.id}`);
+      ids.add(row.id);
+    }
+  }
   transaction(db, () => {
     const topic = db.prepare('INSERT INTO topics (id,subject_id,name,position) VALUES (?,?,?,?) ON CONFLICT DO NOTHING');
     const card = db.prepare('INSERT INTO cards (id,topic_id,theme,question,answer) VALUES (?,?,?,?,?) ON CONFLICT DO NOTHING');
@@ -27,5 +45,11 @@ export function seedStudyDatabase(db) {
       card.run(q.id, topicId, q.tema, q.otazka, q.odpoved);
     }
     for (const values of additionalCards) card.run(...values);
+    const saveTopic = db.prepare(`INSERT INTO topics (id,subject_id,name,position) VALUES (?,?,?,?)
+      ON CONFLICT(id) DO UPDATE SET subject_id=excluded.subject_id,name=excluded.name,position=excluded.position`);
+    const saveCard = db.prepare(`INSERT INTO cards (id,topic_id,theme,question,answer) VALUES (?,?,?,?,?)
+      ON CONFLICT(id) DO UPDATE SET topic_id=excluded.topic_id,theme=excluded.theme,question=excluded.question,answer=excluded.answer`);
+    for (const row of seedTopics) saveTopic.run(row.id, row.subjectId, row.name, row.position ?? 0);
+    for (const row of seedQuestions) saveCard.run(row.id, row.topicId, row.theme, row.question, row.answer);
   });
 }
