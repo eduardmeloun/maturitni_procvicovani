@@ -1,0 +1,60 @@
+.page { min-height: 80vh; padding: 52px 24px 80px; background: radial-gradient(ellipse at 95% 0, #eaf1ff, transparent 42%), #f7f9fc; color: var(--color-navy); }
+.container { width: min(1160px, 100%); margin: auto; }
+.metrics { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; margin-bottom: 24px; }
+.metric { display: flex; flex-direction: column; align-items: center; justify-content: space-between; gap: 18px; min-width: 0; min-height: 180px; padding: 24px 18px; border: 1px solid #e3eaf4; border-radius: 18px; background: #fff; box-shadow: 0 4px 14px #233c6505; text-align: center;
+  h2 { margin: 0; color: #66758d; font-size: .8rem; font-weight: 650; }
+  > strong { color: #24344f; font-size: clamp(2rem, 4vw, 2.6rem); font-weight: 800; letter-spacing: -.05em; line-height: 1.15; }
+  > strong.totalXp { font-size: clamp(1.7rem, 3.5vw, 2.4rem); }
+  p { margin: 0; color: #7d8ba0; font-size: .72rem; line-height: 1.6; }
+}
+.progressValue { display: flex; align-items: center; justify-content: center; gap: 16px; width: 100%; strong { color: #24344f; font-size: clamp(1.5rem, 3vw, 2.4rem); white-space: nowrap; font-weight: 800; letter-spacing: -.045em; } }
+.progressTrack { flex-shrink: 0; width: 64px; height: 9px; overflow: hidden; border-radius: 999px; background: #edf1f7; span { display: block; height: 100%; border-radius: inherit; background: #3d7aef; } }
+.calendarPanel { padding: 26px 32px; margin-bottom: 24px; border: 1px solid #e3eaf4; border-radius: 19px; background: #fff; }
+.calendarHeading { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 26px; h2 { margin: 0; font-size: 1rem; letter-spacing: -.025em; } }
+.calendar { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 10px 18px; text-align: center; }
+.weekday { padding: 0 0 8px; color: #7d8ba0; font-size: .72rem; font-weight: 650; }
+.calendarDay { display: grid; place-items: center; min-width: 0; height: 38px; border-radius: 8px; background: #f3f6fb; color: #78879d; font-size: .82rem; font-weight: 650; }
+.activeDay { color: #fff; background: #4b83e8; }
+.today { outline: 2px solid #a9c5f5; outline-offset: 2px; }
+.calendarFooter { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 14px; margin-top: 24px; }
+.legend { display: flex; gap: 18px; span { display: flex; align-items: center; gap: 6px; font-size: .67rem; color: #7c8ba0; } i { display: inline-block; width: 9px; height: 9px; border-radius: 3px; background: #edf1f7; } i.activeKey { background: #4b83e8; } }
+.month { color: #7c8ba0; font-size: .74rem; text-transform: capitalize; }
+.guestNote { margin: 16px 0 0; font-size: .75rem; color: #7c8ba0; line-height: 1.6; }
+.rankingPanel { overflow: hidden; border: 1px solid #e3eaf4; border-radius: 19px; background: #fff; }
+.rankingHeader { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 24px 28px; h1 { margin: 0; font-size: 1.05rem; font-weight: 750; letter-spacing: -.03em; } select { max-width: 48%; min-height: 40px; padding: 8px 12px; border: 1px solid #e3eaf4; border-radius: 9px; background: #f7f9fc; color: #4673bc; font-size: .76rem; font-weight: 600; cursor: pointer; } }
+.ranking { margin: 0; padding: 0; list-style: none; li { display: flex; align-items: center; gap: 16px; min-height: 70px; padding: 16px 28px; border-top: 1px solid #eef2f7; } }
+.rank { display: grid; place-items: center; flex-shrink: 0; width: 32px; height: 32px; border-radius: 9px; color: #8392a8; background: #f5f7fb; font-size: .8rem; font-weight: 750; }
+.place1 { color: #a67b25; background: #fff4dc; }
+.place2 { color: #7387a4; background: #edf2f8; }
+.place3 { color: #b58059; background: #fff0e5; }
+.studentName { min-width: 0; overflow-wrap: anywhere; color: #42536d; font-size: .85rem; font-weight: 600; line-height: 1.6; }
+.you { display: inline-block; margin-left: 8px; padding: 2px 7px; border-radius: 5px; background: #e0ecff; color: #4673bc; font-size: .62rem; }
+.xp { flex-shrink: 0; margin-left: auto; color: #425675; font-size: .88rem; font-weight: 750; white-space: nowrap; font-variant-numeric: tabular-nums; span { color: #8392a8; font-size: .65rem; font-weight: 500; margin-left: 3px; } }
+.ranking .currentRow { background: #f0f6ff; .studentName { color: #346ac8; } }
+.empty { margin: 0 24px 24px; padding: 24px; border-radius: 12px; background: #f7f9fc; text-align: center; color: #748097; font-size: .85rem; a { color: var(--color-primary); } }
+@media (max-width: 680px) {
+  .page { padding: 32px 16px 48px; }
+  .metrics { gap: 10px; margin-bottom: 18px; }
+  .metric { min-height: 150px; gap: 15px; padding: 20px 8px; border-radius: 14px; h2 { font-size: .73rem; } p { font-size: .65rem; } }
+  .progressValue { flex-direction: column-reverse; gap: 10px; }
+  .progressTrack { width: 48px; height: 6px; }
+  .calendarPanel { padding: 22px 20px; margin-bottom: 18px; border-radius: 16px; }
+  .calendarHeading { margin-bottom: 22px; h2 { font-size: .94rem; } }
+  .calendar { gap: 8px 10px; }
+  .calendarDay { height: 32px; font-size: .75rem; border-radius: 6px; }
+  .weekday { font-size: .66rem; }
+  .calendarFooter { margin-top: 22px; }
+  .rankingPanel { border-radius: 16px; }
+  .rankingHeader { padding: 20px; h1 { font-size: .96rem; } select { font-size: .7rem; padding-inline: 8px; } }
+  .ranking li { padding: 14px 20px; min-height: 62px; gap: 12px; }
+  .rank { width: 29px; height: 29px; font-size: .75rem; }
+  .studentName, .xp { font-size: .77rem; }
+}
+@media (max-width: 380px) {
+  .metric { padding-inline: 5px; > strong { font-size: 1.8rem; } > strong.totalXp { font-size: 1.5rem; } p { font-size: .6rem; } }
+  .calendarPanel { padding-inline: 16px; }
+  .calendar { gap: 8px; }
+  .rankingHeader { align-items: flex-start; flex-direction: column; gap: 12px; select { max-width: 100%; } }
+  .ranking li { padding-inline: 14px; gap: 9px; }
+  .studentName, .xp { font-size: .72rem; }
+}

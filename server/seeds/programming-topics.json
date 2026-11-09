@@ -1,0 +1,34 @@
+
+[
+    {
+      "id": "programovani-okruh-01",
+      "subjectId": "programovani",
+      "name": "Algoritmizace a programování",
+      "position": 1
+    },
+    {
+      "id": "programovani-okruh-02",
+      "subjectId": "programovani",
+      "name": "VS Code a základy JavaScriptu a TypeScriptu",
+      "position": 2
+    },
+    {
+      "id": "programovani-okruh-03",
+      "subjectId": "programovani",
+      "name": "Typy v TypeScriptu",
+      "position": 3
+    },
+    {
+      "id": "programovani-okruh-04",
+      "subjectId": "programovani",
+      "name": "Objektově orientované programování",
+      "position": 4
+    },
+    {
+      "id": "programovani-okruh-05",
+      "subjectId": "programovani",
+      "name": "Interface v TypeScriptu",
+      "position": 5
+    }
+  ]
+  

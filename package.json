@@ -3,11 +3,21 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "engines": {
+    "node": ">=24.14.0"
+  },
   "scripts": {
-    "dev": "vite",
+    "dev": "node scripts/dev.mjs",
+    "dev:client": "vite",
+    "dev:server": "node --watch server/index.mjs",
+    "start:server": "node server/index.mjs",
+    "db:migrate": "node server/setup.mjs",
+    "db:seed": "node server/setup.mjs --seed",
+    "test": "node --test server/tests/*.test.mjs",
     "build": "tsc -b && vite build",
     "lint": "oxlint",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "start": "node server/start.mjs"
   },
   "dependencies": {
     "react": "^19.3.1",
@@ -21,6 +31,6 @@
     "oxlint": "^1.89.0",
     "sass-embedded": "^1.107.1",
     "typescript": "~7.0.2",
-    "vite": "^8.3.5"
+    "vite": "^8.3.6"
   }
 }

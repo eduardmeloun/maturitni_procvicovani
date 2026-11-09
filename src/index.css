@@ -1,0 +1,15 @@
+﻿:root {
+  font-family: Manrope, system-ui, sans-serif;
+  color: #1e293b;
+  background: #f8fafc;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  --primary: #2563eb;
+  --border: #e2e8f0;
+}
+* { box-sizing: border-box; }
+body { margin: 0; min-width: 320px; }
+a { color: var(--primary); }
+button, input, textarea, select { font: inherit; }
+:focus-visible { outline: 3px solid #2563eb; outline-offset: 4px; }
