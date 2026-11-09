@@ -17,6 +17,7 @@ export function AuthModal({ mode, onModeChange, onClose, onAuthenticated }: Prop
   const [submitted, setSubmitted] = useState(false)
   const [busy, setBusy] = useState(false)
   const [error, setError] = useState('')
+  const [passwordMismatch, setPasswordMismatch] = useState(false)
   const isForgot = mode === 'forgot'
   const isReset = mode === 'reset'
   const isRegister = mode === 'register'
@@ -50,8 +51,11 @@ export function AuthModal({ mode, onModeChange, onClose, onAuthenticated }: Prop
     if (busy) return
     const data = Object.fromEntries(new FormData(event.currentTarget))
     if ((isRegister || isReset) && data.password !== data.passwordConfirm) {
-      setError('Zadaná hesla se neshodují.'); return
+      setError(''); setPasswordMismatch(true)
+      event.currentTarget.querySelector<HTMLInputElement>('[name=passwordConfirm]')?.focus()
+      return
     }
+    setPasswordMismatch(false)
     setBusy(true); setError('')
     try {
       const endpoint = isRegister ? 'register' : isForgot ? 'forgot-password' : isReset ? 'reset-password' : 'login'
@@ -100,13 +104,21 @@ export function AuthModal({ mode, onModeChange, onClose, onAuthenticated }: Prop
             <Button onClick={() => onModeChange('login')}>Zpět na přihlášení</Button>
           </div>
         ) : (
-          <form key={mode} className={styles.form} onSubmit={handleSubmit}>
+          <form key={mode} className={styles.form} onSubmit={handleSubmit} onInput={event => {
+            if (passwordMismatch) {
+              const data = new FormData(event.currentTarget)
+              if (data.get('password') === data.get('passwordConfirm')) setPasswordMismatch(false)
+            }
+          }}>
             {error && <p role="alert">{error}</p>}
             <fieldset disabled={busy} style={{ border: 0, padding: 0, margin: 0, display: "contents" }}>
             {isRegister && <InputField label="Uživatelské jméno" name="username" minLength={3} maxLength={32} pattern="[a-zA-Z0-9_.-]+" autoComplete="username" placeholder="Jak ti máme říkat?" required />}
             {!isReset && <InputField label={isRegister || isForgot ? 'E-mail' : 'E-mail nebo uživatelské jméno'} name={isRegister || isForgot ? 'email' : 'login'} type={isRegister || isForgot ? 'email' : 'text'} autoComplete={isForgot || isRegister ? 'email' : 'username'} required maxLength={254} />}
             {!isForgot && <InputField label="Heslo" name="password" type="password" autoComplete={isRegister || isReset ? 'new-password' : 'current-password'} placeholder="Alespoň 8 znaků" minLength={8} maxLength={128} required />}
-            {(isRegister || isReset) && <InputField label="Heslo znovu" name="passwordConfirm" type="password" autoComplete="new-password" placeholder="Zopakuj své heslo" minLength={8} required onChange={(event) => event.currentTarget.setCustomValidity('')} />}
+            {(isRegister || isReset) && <>
+              <InputField label="Heslo znovu" name="passwordConfirm" type="password" autoComplete="new-password" placeholder="Zopakuj své heslo" minLength={8} required aria-invalid={passwordMismatch || undefined} aria-describedby={passwordMismatch ? 'password-mismatch' : undefined} wrapperClassName={passwordMismatch ? styles.invalidField : ''} />
+              {passwordMismatch && <p id="password-mismatch" className={styles.passwordError} role="alert"><Icon name="close" size={18} /><span>Hesla se neshodují. Zadej prosím stejné heslo do obou polí.</span></p>}
+            </>}
             {isRegister && <label className={styles.consent}><input type="checkbox" required /><span>Souhlasím s podmínkami používání.</span></label>}
             {!isRegister && !isForgot && !isReset && <button className={styles.forgot} type="button" onClick={() => onModeChange('forgot')}>Zapomněl/a jsi heslo?</button>}
             <Button type="submit" className={styles.submit}>

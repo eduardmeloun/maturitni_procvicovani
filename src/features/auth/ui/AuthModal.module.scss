@@ -19,3 +19,5 @@
 .success strong { display: block; color: #17233c; font-size: 1.05rem; }
 .success p { margin: .45rem 0 1.2rem; line-height: 1.5; }
 @media (max-width: 480px) { .dialog { padding: 1.7rem 1.25rem 1.4rem; border-radius: 20px; } }
+.passwordError { display: flex; align-items: flex-start; gap: .6rem; margin: -.3rem 0 0; padding: .8rem .9rem; border: 1px solid #fecaca; border-left: 3px solid #dc2626; border-radius: 10px; background: #fff1f2; color: #b42332; font-size: .82rem; font-weight: 650; line-height: 1.6; svg { flex-shrink: 0; margin-top: 2px; } }
+.invalidField { color: #b42332; input { border-color: #dc626c; background: #fff8f8; &:focus { border-color: #dc2626; box-shadow: 0 0 0 3px #dc26261a; } } }
