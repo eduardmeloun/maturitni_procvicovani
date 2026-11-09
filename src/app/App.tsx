@@ -9,6 +9,7 @@ import { api, ApiError, request } from '../lib/api'
 import type { User } from '../lib/contracts'
 import { StudyPage } from '../features/study/StudyPage'
 import { StatsPage } from '../features/stats/StatsPage'
+import { Button, Icon } from '../shared/ui'
 import styles from './App.module.scss'
 const paths: Record<Page, string> = { home: '/', contact: '/kontakty', profile: '/profile', leaderboard: '/leaderboard', flashcards: '/flashcards' }
 const currentPage = (): Page => (Object.keys(paths) as Page[]).find(key => paths[key] === window.location.pathname) || 'home'
@@ -51,7 +52,38 @@ export default function App() {
     <SiteHeader page={page} onNavigate={navigate} onAuth={openAuth} authenticated={!!user} onLogout={logout} />
     <main id="main-content">
       {error && <p role="alert">{error}</p>}
-      {loading ? <p role="status">Načítám účet…</p> : protectedPage && !user ? <section><h1>Přihlášení je potřeba</h1><button onClick={() => openAuth('login')}>Přihlásit se</button></section> :
+      {loading ? <p role="status">Načítám účet…</p> : protectedPage && !user ? <section className={styles.authGate} aria-labelledby="auth-gate-title">
+        <div className={styles.authPanel}>
+          <div className={styles.authCopy}>
+            <span className={styles.eyebrow}><Icon name="book" size={16} /> TVŮJ STUDIJNÍ PROSTOR</span>
+            <h1 id="auth-gate-title">{page === 'flashcards' ? <>O kartičku blíž <span>k maturitě.</span></> : <>Tvůj pokrok <span>na jednom místě.</span></>}</h1>
+            <p className={styles.authDescription}>Přihlas se a {page === 'flashcards' ? 'pusť se do procvičování. Vyber si maturitní okruh a uč se vlastním tempem.' : 'podívej se, co už umíš a na čem ještě zapracovat.'}</p>
+            <ul className={styles.authBenefits}>
+              <li><span><Icon name="book" size={18} /></span>Kartičky přehledně podle předmětů a okruhů</li>
+              <li><span><Icon name="chart" size={18} /></span>Uložený pokrok po každém procvičování</li>
+              <li><span><Icon name="target" size={18} /></span>Opakování toho, co ti ještě nejde</li>
+            </ul>
+            <div className={styles.authActions}>
+              <Button onClick={() => openAuth('login')}>Přihlásit se <Icon name="arrow" size={18} /></Button>
+              <Button variant="secondary" onClick={() => openAuth('register')}>Vytvořit účet</Button>
+            </div>
+            <p className={styles.authNote}><Icon name="shield" size={15} /> Tvůj pokrok zůstane uložený ve tvém účtu.</p>
+          </div>
+          <div className={styles.authPreview} aria-hidden="true">
+            <span className={styles.previewLabel}><Icon name="sparkle" size={16} /> MALÉ KROKY. VELKÝ POKROK.</span>
+            <div className={styles.previewStack}>
+              <div className={styles.previewCard}>
+                <div className={styles.previewTop}><span>ČESKÝ JAZYK</span><span>01 / 12</span></div>
+                <span className={styles.questionLabel}>OTÁZKA</span>
+                <h2>Co je charakteristické pro romantismus?</h2>
+                <p>Literatura · Literární směry</p>
+                <div className={styles.previewAnswer}><Icon name="book" size={17} /> Každá odpověď tě posune dál.</div>
+              </div>
+            </div>
+            <div className={styles.previewProgress}><span><Icon name="check" size={18} /></span><div><strong>Dnes o kousek dál.</strong><p>Jedna kartička za druhou.</p></div></div>
+          </div>
+        </div>
+      </section> :
         page === 'home' ? <HomePage onStart={() => user ? navigate('flashcards') : openAuth('register')} /> : page === 'contact' ? <ContactPage /> : page === 'flashcards' ? <StudyPage /> : <StatsPage key={page + (user?.id || "guest")} page={page} user={user} />}
     </main>
     <SiteFooter onNavigate={navigate} />
