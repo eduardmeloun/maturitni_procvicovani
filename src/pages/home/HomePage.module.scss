@@ -40,9 +40,7 @@
 .streak { display: grid; width: 34px; height: 34px; place-items: center; border-radius: 10px; color: #e88735; background: #fff1df; font-size: 1.25rem; }
 .floatBottom strong, .floatBottom small { display: block; }
 .floatBottom small { margin-top: 2px; color: #929bad; font-size: .65rem; font-weight: 550; }
-.spark { position: absolute; color: #f0b858; }
-.sparkOne { top: 80px; left: 53px; font-size: 1.7rem; }
-.sparkTwo { bottom: 70px; right: 38px; color: #8aaff4; font-size: 1.35rem; }
+
 .heroOrnament { position: absolute; right: -80px; bottom: -218px; width: 460px; height: 300px; border: 1px solid #e9f0fd; border-radius: 50%; }
 .trustStrip { min-height: 74px; padding: 1rem max(24px, calc((100% - 1160px) / 2)); display: flex; justify-content: space-between; align-items: center; gap: 1rem; border-top: 1px solid #eff2f7; border-bottom: 1px solid #eff2f7; background: #fff; }
 .trustStrip > div { display: flex; align-items: center; gap: .5rem; color: #657187; font-size: .8rem; font-weight: 650; }
@@ -70,7 +68,6 @@
 .progressCard { position: relative; z-index: 1; width: min(330px, 78%); padding: 1.3rem; border: 1px solid #e9eef6; border-radius: 18px; background: #fff; box-shadow: 0 20px 50px rgba(45,76,131,.11); }
 .progressHeader { display: flex; align-items: center; gap: .55rem; color: #738097; font-size: .76rem; font-weight: 700; }
 .progressBadge { display: grid; width: 30px; height: 30px; place-items: center; border-radius: 9px; color: #2563eb; background: #eef4ff; }
-.liveDot { width: 7px; height: 7px; margin-left: auto; border-radius: 50%; background: #3cbd8d; }
 .progressPercent { margin-top: .85rem; color: #17233c; font-size: 3.2rem; font-weight: 850; letter-spacing: -.08em; line-height: 1; }
 .progressPercent span { margin-left: .1rem; color: #2563eb; font-size: 1.4rem; }
 .progressCard > p { margin: .35rem 0 1rem; color: #8994a7; font-size: .74rem; }
@@ -81,8 +78,6 @@
 .miniBadge > span { display: grid; width: 31px; height: 31px; place-items: center; border-radius: 9px; background: #e7f8ef; }
 .miniBadge b, .miniBadge small { display: block; }
 .miniBadge b { color: #36445c; font-size: .7rem; }
-.miniBadge small { margin-top: 2px; color: #919bad; font-size: .62rem; }
-.artDot { position: absolute; top: 46px; left: 54px; width: 14px; height: 14px; border-radius: 50%; background: #f4c769; box-shadow: 0 0 0 7px #fff3d4; }
 .progressCopy ul { display: grid; gap: .8rem; margin: 1.35rem 0 1.7rem; padding: 0; list-style: none; }
 .progressCopy li { display: flex; align-items: center; gap: .55rem; color: #536078; font-size: .85rem; }
 .progressCopy li svg { flex: 0 0 auto; display: grid; width: 22px; height: 22px; padding: 3px; border-radius: 50%; color: #168a5c; background: #e4f7ed; }
@@ -115,8 +110,6 @@
 .ctaIcon { display: grid; width: 54px; height: 54px; margin: 0 auto 1rem; place-items: center; border-radius: 17px; color: #fff; background: #2563eb; box-shadow: 0 8px 18px rgba(37,99,235,.22); }
 .cta h2 { margin: .6rem 0; font-size: clamp(2rem, 4vw, 2.75rem); }
 .cta > p { margin: .7rem 0 1.3rem; color: #78849a; font-size: .92rem; }
-.ctaStar { position: absolute; top: 22%; left: 17%; color: #efbd5d; font-size: 1.8rem; }
-.ctaDot { position: absolute; right: 17%; bottom: 25%; width: 12px; height: 12px; border-radius: 50%; background: #91b3f4; box-shadow: 0 0 0 7px #e2ebfd; }
 @media (max-width: 900px) { .heroInner { min-height: 550px; grid-template-columns: 1fr .85fr; gap: .5rem; padding: 4.3rem 0; } .visual { min-height: 370px; } .floatTop { right: -5px; } .progressSection, .leaderboard { gap: 2.5rem; } .trustStrip { flex-wrap: wrap; justify-content: center; column-gap: 2rem; } .trustStrip > div { font-size: .75rem; } }
-@media (max-width: 700px) { .heroInner { width: min(100% - 36px, 560px); grid-template-columns: 1fr; padding: 3.3rem 0 2rem; } .heroCopy { max-width: none; } .hero h1 { font-size: clamp(3.15rem, 12vw, 4.4rem); } .lead { font-size: .98rem; } .visual { min-height: 380px; margin-top: .4rem; } .floatTop { right: 1%; } .floatBottom { left: 2%; } .trustStrip { padding: 1rem 18px; gap: .7rem 1.3rem; justify-content: flex-start; } .trustStrip > div { width: calc(50% - .7rem); font-size: .7rem; } .features { width: min(100% - 36px, 560px); padding: 4.5rem 0; } .sectionHeading { margin-bottom: 2rem; } .featureGrid { grid-template-columns: 1fr; gap: .8rem; } .featureCard { min-height: 0; padding: 1.25rem; } .featureCard h3 { margin-top: .8rem; } .progressSection, .leaderboard { width: min(100% - 36px, 560px); padding: 2rem 0 4.5rem; grid-template-columns: 1fr; gap: 2rem; } .progressArt { min-height: 320px; } .progressCopy, .leaderCopy { grid-row: 1; } .rankCard { padding: 1rem; } .cta { margin: 0 18px 4rem; padding: 3rem 1rem; } .ctaStar { left: 6%; } .ctaDot { right: 8%; } }
+@media (max-width: 700px) { .heroInner { width: min(100% - 36px, 560px); grid-template-columns: 1fr; padding: 3.3rem 0 2rem; } .heroCopy { max-width: none; } .hero h1 { font-size: clamp(3.15rem, 12vw, 4.4rem); } .lead { font-size: .98rem; } .visual { min-height: 380px; margin-top: .4rem; } .floatTop { right: 1%; } .floatBottom { left: 2%; } .trustStrip { padding: 1rem 18px; gap: .7rem 1.3rem; justify-content: flex-start; } .trustStrip > div { width: calc(50% - .7rem); font-size: .7rem; } .features { width: min(100% - 36px, 560px); padding: 4.5rem 0; } .sectionHeading { margin-bottom: 2rem; } .featureGrid { grid-template-columns: 1fr; gap: .8rem; } .featureCard { min-height: 0; padding: 1.25rem; } .featureCard h3 { margin-top: .8rem; } .progressSection, .leaderboard { width: min(100% - 36px, 560px); padding: 2rem 0 4.5rem; grid-template-columns: 1fr; gap: 2rem; } .progressArt { min-height: 320px; } .progressCopy, .leaderCopy { grid-row: 1; } .rankCard { padding: 1rem; } .cta { margin: 0 18px 4rem; padding: 3rem 1rem; }}
 @media (max-width: 420px) { .formRow { flex-direction: column; } .formRow > button { width: 100%; } .visual { min-height: 340px; } .studyCard { padding: 1.05rem 1.1rem .85rem; } .cardBody { min-height: 145px; } .float { padding: .55rem .65rem; } .floatTop { top: 30px; } .floatBottom { bottom: 25px; } .rankRow { grid-template-columns: 22px 34px 1fr auto; gap: .45rem; } .rankRow > strong { font-size: .7rem; } }

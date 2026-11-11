@@ -3,7 +3,7 @@ import type { IconName } from '../../shared/ui/Icon'
 import type { UserProfile } from './types'
 import styles from './Stats.module.scss'
 
-const badgeIcons: Record<string, IconName> = { flame: 'sparkle', cards: 'book', network: 'users', trophy: 'cap' }
+const badgeIcons: Record<string, IconName> = { flame: 'target', cards: 'book', network: 'users', trophy: 'cap' }
 
 export function ProfileView({ user }: { user: UserProfile }) {
   const weeklyTotal = user.last7Days.reduce((sum, day) => sum + day.count, 0)
@@ -18,11 +18,11 @@ export function ProfileView({ user }: { user: UserProfile }) {
       <div className={styles.identity}>
         <div className={styles.avatar}>{user.avatarUrl && !user.avatarUrl.startsWith('data:') ? <img src={user.avatarUrl} alt="" /> : user.name.slice(0, 2).toLocaleUpperCase('cs-CZ')}</div>
         <div className={styles.identityCopy}><span>MŮJ PROFIL</span><h2>{user.name}</h2><p>{[user.classGroup, user.fieldOfStudy].filter(Boolean).join(' · ') || 'Tvůj prostor pro přípravu k maturitě'}</p></div>
-        <span className={styles.levelPill}><Icon name="sparkle" size={16} /> Úroveň {user.level}</span>
+        <span className={styles.levelPill}><Icon name="cap" size={16} /> Úroveň {user.level}</span>
       </div>
       <div className={styles.metrics}>
         <div className={styles.metric}><span className={styles.blueIcon}><Icon name="cap" size={22} /></span><div><span>Studijní úroveň</span><strong>{user.level}</strong><small>Roste s nasbíranými XP</small></div></div>
-        <div className={styles.metric}><span className={styles.amberIcon}><Icon name="sparkle" size={22} /></span><div><span>Série aktivních dnů</span><strong>{user.streakDays} <em>{user.streakDays === 1 ? 'den' : user.streakDays >= 2 && user.streakDays <= 4 ? 'dny' : 'dnů'}</em></strong><small>Pravidelnost dělá rozdíl</small></div></div>
+        <div className={styles.metric}><span className={styles.amberIcon}><Icon name="clock" size={22} /></span><div><span>Série aktivních dnů</span><strong>{user.streakDays} <em>{user.streakDays === 1 ? 'den' : user.streakDays >= 2 && user.streakDays <= 4 ? 'dny' : 'dnů'}</em></strong><small>Pravidelnost dělá rozdíl</small></div></div>
         <div className={styles.metric}><span className={styles.greenIcon}><Icon name="check" size={22} /></span><div><span>Zvládnuté kartičky</span><strong>{user.cardsCompleted.toLocaleString('cs-CZ')}</strong><small>Kartičky označené jako „umím“</small></div></div>
       </div>
       <div className={styles.profileGrid}>

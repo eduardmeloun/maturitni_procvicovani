@@ -80,7 +80,7 @@ export function StudyPage() {
               <div className={styles.cardTop}><span className={styles.subject}>{currentSubject?.name || 'Procvičování'}</span><span className={styles.counter}><strong>{String(index % visible.length + 1).padStart(2, '0')}</strong> / {String(visible.length).padStart(2, '0')}</span></div>
               <div className={styles.cardBody}><span className={styles.questionLabel}>OTÁZKA</span><h2>{card.question}</h2><p className={styles.topic}>{currentTopic?.name} · {card.theme}</p></div>
               <div className={styles.answerInput}><label htmlFor="study-answer">Zkus to vlastními slovy <span>nepovinné</span></label><textarea id="study-answer" value={answer} onChange={e => setAnswer(e.target.value)} placeholder="Co si vybavuješ? Napiš si sem svou odpověď…" rows={3} /></div>
-              <div className={styles.reveal}><span><Icon name="sparkle" size={17} /> Nejdřív se zkus zamyslet.</span><Button variant={flipped ? 'secondary' : 'primary'} aria-expanded={flipped} aria-controls="study-solution" onClick={() => setFlipped(!flipped)}><Icon name="book" size={17} />{flipped ? 'Skrýt odpověď' : 'Ukázat odpověď'}</Button></div>
+              <div className={styles.reveal}><span><Icon name="target" size={17} /> Nejdřív se zkus zamyslet.</span><Button variant={flipped ? 'secondary' : 'primary'} aria-expanded={flipped} aria-controls="study-solution" onClick={() => setFlipped(!flipped)}><Icon name="book" size={17} />{flipped ? 'Skrýt odpověď' : 'Ukázat odpověď'}</Button></div>
               {flipped && <div id="study-solution" className={styles.solution}><span className={styles.questionLabel}>ODPOVĚĎ</span><p>{card.answer}</p></div>}
             </article>
             <div className={styles.rating}><div className={styles.ratingHeading}><strong>Jak ti to šlo?</strong><span>Ohodnoť se a pokračuj další kartičkou.</span></div><div className={styles.ratingButtons}>
@@ -90,7 +90,7 @@ export function StudyPage() {
         </div>
         <aside className={styles.sidebar}>
           <div className={styles.progressCard}><span className={styles.sideIcon}><Icon name="chart" size={22} /></span><h2>Každý krok se počítá.</h2><p>Tvůj pokrok ve vybraných tématech.</p><div className={styles.progressNumbers}><strong>{progress}<small> %</small></strong><span>zvládnuto</span></div><div className={styles.progressBar} role="progressbar" aria-label="Zvládnuté kartičky" aria-valuenow={progress} aria-valuemin={0} aria-valuemax={100}><span style={{ width: `${progress}%` }} /></div><div className={styles.progressLegend}><span><i />Umím</span><strong>{knownCount} z {scopedCards.length}</strong></div></div>
-          <div className={styles.tip}><span className={styles.tipIcon}><Icon name="sparkle" size={20} /></span><h3>Malý tip, velký rozdíl</h3><p>Zkus si odpověď říct nahlas ještě před otočením kartičky. Lépe si ji zapamatuješ.</p></div>
+          <div className={styles.tip}><span className={styles.tipIcon}><Icon name="book" size={20} /></span><h3>Malý tip, velký rozdíl</h3><p>Zkus si odpověď říct nahlas ještě před otočením kartičky. Lépe si ji zapamatuješ.</p></div>
           <p className={styles.saved}><Icon name="shield" size={16} /> Tvůj pokrok se ukládá do účtu.</p>
         </aside>
       </div>

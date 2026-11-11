@@ -47,7 +47,7 @@ export default function App() {
     try { await request('/auth/logout', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: '{}' }); setUser(null); navigate('home') }
     catch (error) { setError(error instanceof Error ? error.message : 'Odhlášení selhalo.') }
   }
-  const protectedPage = page === 'profile' || page === 'flashcards'
+  const protectedPage = page === 'profile' || page === 'flashcards' || page === 'leaderboard'
   return <div className={styles.app}>
     <SiteHeader page={page} onNavigate={navigate} onAuth={openAuth} authenticated={!!user} onLogout={logout} />
     <main id="main-content">
@@ -56,8 +56,8 @@ export default function App() {
         <div className={styles.authPanel}>
           <div className={styles.authCopy}>
             <span className={styles.eyebrow}><Icon name="book" size={16} /> TVŮJ STUDIJNÍ PROSTOR</span>
-            <h1 id="auth-gate-title">{page === 'flashcards' ? <>O kartičku blíž <span>k maturitě.</span></> : <>Tvůj pokrok <span>na jednom místě.</span></>}</h1>
-            <p className={styles.authDescription}>Přihlas se a {page === 'flashcards' ? 'pusť se do procvičování. Vyber si maturitní okruh a uč se vlastním tempem.' : 'podívej se, co už umíš a na čem ještě zapracovat.'}</p>
+            <h1 id="auth-gate-title">{page === 'flashcards' ? <>O kartičku blíž <span>k maturitě.</span></> : page === 'leaderboard' ? <>Každý bod tě posune <span>v žebříčku.</span></> : <>Tvůj pokrok <span>na jednom místě.</span></>}</h1>
+            <p className={styles.authDescription}>Přihlas se a {page === 'flashcards' ? 'pusť se do procvičování. Vyber si maturitní okruh a uč se vlastním tempem.' : page === 'leaderboard' ? 'zapoj se do žebříčku a sleduj své umístění. Pořadí ostatních studentů si můžeš prohlédnout už teď.' : 'podívej se, co už umíš a na čem ještě zapracovat.'}</p>
             <ul className={styles.authBenefits}>
               <li><span><Icon name="book" size={18} /></span>Kartičky přehledně podle předmětů a okruhů</li>
               <li><span><Icon name="chart" size={18} /></span>Uložený pokrok po každém procvičování</li>
@@ -69,8 +69,9 @@ export default function App() {
             </div>
             <p className={styles.authNote}><Icon name="shield" size={15} /> Tvůj pokrok zůstane uložený ve tvém účtu.</p>
           </div>
-          <div className={styles.authPreview} aria-hidden="true">
-            <span className={styles.previewLabel}><Icon name="sparkle" size={16} /> MALÉ KROKY. VELKÝ POKROK.</span>
+          <div className={styles.authPreview} aria-hidden={page === 'leaderboard' ? undefined : true}>
+            {page === 'leaderboard' ? <StatsPage page="leaderboard" user={null} preview /> : <>
+            <span className={styles.previewLabel}><Icon name="target" size={16} /> MALÉ KROKY. VELKÝ POKROK.</span>
             <div className={styles.previewStack}>
               <div className={styles.previewCard}>
                 <div className={styles.previewTop}><span>ČESKÝ JAZYK</span><span>01 / 12</span></div>
@@ -81,10 +82,11 @@ export default function App() {
               </div>
             </div>
             <div className={styles.previewProgress}><span><Icon name="check" size={18} /></span><div><strong>Dnes o kousek dál.</strong><p>Jedna kartička za druhou.</p></div></div>
+            </>}
           </div>
         </div>
       </section> :
-        page === 'home' ? <HomePage onStart={() => user ? navigate('flashcards') : openAuth('register')} /> : page === 'contact' ? <ContactPage /> : page === 'flashcards' ? <StudyPage /> : <StatsPage key={page + (user?.id || "guest")} page={page} user={user} />}
+        page === 'home' ? <HomePage authenticated={!!user} onStart={() => user ? navigate('flashcards') : openAuth('register')} /> : page === 'contact' ? <ContactPage /> : page === 'flashcards' ? <StudyPage /> : <StatsPage key={page + (user?.id || "guest")} page={page} user={user} />}
     </main>
     <SiteFooter onNavigate={navigate} />
     {authMode && <AuthModal key={authMode} mode={authMode} onModeChange={openAuth} onClose={closeAuth} onAuthenticated={value => { setUser(value); setError('') }} />}

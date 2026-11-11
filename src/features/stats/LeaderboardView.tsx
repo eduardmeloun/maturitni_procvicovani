@@ -3,7 +3,7 @@ import type { LeaderboardSummary } from './types'
 import { sortLeaderboard } from './calculations'
 import styles from './LeaderboardView.module.scss'
 
-export function LeaderboardView({ data }: { data: LeaderboardSummary }) {
+export function LeaderboardView({ data, preview = false }: { data: LeaderboardSummary; preview?: boolean }) {
   const [period, setPeriod] = useState<'month' | 'all'>('month')
   const [today] = useState(() => new Intl.DateTimeFormat('sv-SE', { timeZone: 'Europe/Prague' }).format(new Date()))
   const monthDate = new Date(`${today.slice(0, 7)}-01T12:00:00Z`)
@@ -13,9 +13,9 @@ export function LeaderboardView({ data }: { data: LeaderboardSummary }) {
   const progress = Math.max(0, Math.min(100, data.progressPercent))
   const monthOffset = monthDate.getUTCDay()
 
-  return <section className={styles.page} aria-label="Žebříček studentů">
+  return <section className={`${styles.page} ${preview ? styles.preview : ''}`} aria-label="Žebříček studentů">
     <div className={styles.container}>
-      <div className={styles.metrics}>
+      {!preview && <><div className={styles.metrics}>
         <section className={styles.metric} aria-labelledby="rank-label">
           <h2 id="rank-label">Pořadí</h2>
           <strong>{current ? `#${current.rank}` : '—'}</strong>
@@ -49,9 +49,10 @@ export function LeaderboardView({ data }: { data: LeaderboardSummary }) {
         {!current && <p className={styles.guestNote}>Po přihlášení tu uvidíš svoji studijní aktivitu.</p>}
       </section>
 
+      </>}
       <section className={styles.rankingPanel} aria-labelledby="ranking-heading">
         <div className={styles.rankingHeader}>
-          <h1 id="ranking-heading">Žebříček studentů</h1>
+          {preview ? <h2 id="ranking-heading">Žebříček studentů</h2> : <h1 id="ranking-heading">Žebříček studentů</h1>}
           <select aria-label="Období žebříčku" value={period} onChange={event => setPeriod(event.target.value as 'month' | 'all')}><option value="month">Tento měsíc</option><option value="all">Celkově</option></select>
         </div>
         {sorted.length ? <ol className={styles.ranking}>

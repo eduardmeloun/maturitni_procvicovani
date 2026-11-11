@@ -6,7 +6,7 @@ import { ProfileView } from './ProfileView'
 import { LeaderboardView } from './LeaderboardView'
 import type { UserProfile, LeaderboardSummary, LeaderboardStudent } from './types'
 import { calculateLevel, calculateStreak, formatLast7Days } from './calculations'
-export function StatsPage({ page, user }: { page: 'profile' | 'leaderboard'; user: User | null }) {
+export function StatsPage({ page, user, preview = false }: { page: 'profile' | 'leaderboard'; user: User | null; preview?: boolean }) {
   const [profile, setProfile] = useState<UserProfile | null>(null)
   const [board, setBoard] = useState<LeaderboardSummary | null>(null)
   const [error, setError] = useState('')
@@ -37,5 +37,5 @@ export function StatsPage({ page, user }: { page: 'profile' | 'leaderboard'; use
   if (error || (page === 'profile' ? !profile : !board)) return <section className={styles.page}><div className={styles.container}><div className={styles.panel}>
     {error ? <><p role="alert">{error}</p><button onClick={() => window.location.reload()}>Zkusit znovu</button></> : <p role="status">Načítám {page === 'profile' ? 'profil' : 'žebříček'}…</p>}
   </div></div></section>
-  return page === 'profile' ? <ProfileView user={profile!} /> : <LeaderboardView data={board!} />
+  return page === 'profile' ? <ProfileView user={profile!} /> : <LeaderboardView data={board!} preview={preview} />
 }
