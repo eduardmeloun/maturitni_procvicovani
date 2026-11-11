@@ -28,10 +28,10 @@ export function SiteHeader({ page, onNavigate, onAuth, authenticated, onLogout }
           <Icon name={menuOpen ? 'close' : 'menu'} size={22} />
         </button>
         <nav className={`${styles.nav} ${menuOpen ? styles.open : ''}`} aria-label="Hlavní navigace">
-          <button type="button" className={styles.navLink} onClick={() => { onNavigate('flashcards'); setMenuOpen(false) }}>Kartičky</button>
-          <button type="button" className={styles.navLink} onClick={() => { onNavigate('leaderboard'); setMenuOpen(false) }}>Leaderboard</button>
-          <button type="button" className={`${styles.navLink} ${page === 'contact' ? styles.active : ''}`} onClick={goToContact}>Kontakty</button>
-          {authenticated && <button type="button" className={styles.navLink} onClick={() => { onNavigate('profile'); setMenuOpen(false) }}>Profil</button>}
+          <button type="button" className={`${styles.navLink} ${page === 'flashcards' ? styles.active : ''}`} aria-current={page === 'flashcards' ? 'page' : undefined} onClick={() => { onNavigate('flashcards'); setMenuOpen(false) }}>Kartičky</button>
+          <button type="button" className={`${styles.navLink} ${page === 'leaderboard' ? styles.active : ''}`} aria-current={page === 'leaderboard' ? 'page' : undefined} onClick={() => { onNavigate('leaderboard'); setMenuOpen(false) }}>Leaderboard</button>
+          <button type="button" className={`${styles.navLink} ${page === 'contact' ? styles.active : ''}`} aria-current={page === 'contact' ? 'page' : undefined} onClick={goToContact}>Kontakty</button>
+          {authenticated && <button type="button" className={`${styles.navLink} ${page === 'profile' ? styles.active : ''}`} aria-current={page === 'profile' ? 'page' : undefined} onClick={() => { onNavigate('profile'); setMenuOpen(false) }}>Profil</button>}
           <div className={styles.actions}>
             {authenticated ? <Button variant="text" onClick={onLogout}>Odhlásit se</Button> : <>
             <Button variant="text" onClick={() => { onAuth('login'); setMenuOpen(false) }}>Přihlásit se</Button>

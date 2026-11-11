@@ -3,7 +3,7 @@ import { ContactForm } from './ui/ContactForm'
 import { ContactInfo } from './ui/ContactInfo'
 import styles from './ContactPage.module.scss'
 
-const contactEmail = 'maturytaformalyta@spsemb.cz'
+const contactEmail = 'maturytaformalyta@gmail.com'
 
 export function ContactPage() {
   return (
