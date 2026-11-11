@@ -70,7 +70,7 @@ export default function App() {
             <p className={styles.authNote}><Icon name="shield" size={15} /> Tvůj pokrok zůstane uložený ve tvém účtu.</p>
           </div>
           <div className={styles.authPreview} aria-hidden="true">
-            <span className={styles.previewLabel}><Icon name="sparkle" size={16} /> MALÉ KROKY. VELKÝ POKROK.</span>
+            <span className={styles.previewLabel}><Icon name="target" size={16} /> MALÉ KROKY. VELKÝ POKROK.</span>
             <div className={styles.previewStack}>
               <div className={styles.previewCard}>
                 <div className={styles.previewTop}><span>ČESKÝ JAZYK</span><span>01 / 12</span></div>

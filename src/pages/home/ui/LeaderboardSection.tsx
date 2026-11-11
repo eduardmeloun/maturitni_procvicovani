@@ -51,7 +51,7 @@ export function LeaderboardSection({ onJoin }: { onJoin: () => void }) {
             <strong>{student.xpThisMonth.toLocaleString('cs-CZ')} <small>XP</small></strong>
           </div>
         ))}
-        {state === 'ready' && rankings.length > 0 && <p className={styles.rankFoot}><Icon name="sparkle" size={15} /> Tvoje tempo, tvoje cesta.</p>}
+        {state === 'ready' && rankings.length > 0 && <p className={styles.rankFoot}><Icon name="cap" size={15} /> Tvoje tempo, tvoje cesta.</p>}
       </div>
     </section>
   )
