@@ -47,7 +47,7 @@ export default function App() {
     try { await request('/auth/logout', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: '{}' }); setUser(null); navigate('home') }
     catch (error) { setError(error instanceof Error ? error.message : 'Odhlášení selhalo.') }
   }
-  const protectedPage = page === 'profile' || page === 'flashcards'
+  const protectedPage = page === 'profile' || page === 'flashcards' || page === 'leaderboard'
   return <div className={styles.app}>
     <SiteHeader page={page} onNavigate={navigate} onAuth={openAuth} authenticated={!!user} onLogout={logout} />
     <main id="main-content">
@@ -56,8 +56,8 @@ export default function App() {
         <div className={styles.authPanel}>
           <div className={styles.authCopy}>
             <span className={styles.eyebrow}><Icon name="book" size={16} /> TVŮJ STUDIJNÍ PROSTOR</span>
-            <h1 id="auth-gate-title">{page === 'flashcards' ? <>O kartičku blíž <span>k maturitě.</span></> : <>Tvůj pokrok <span>na jednom místě.</span></>}</h1>
-            <p className={styles.authDescription}>Přihlas se a {page === 'flashcards' ? 'pusť se do procvičování. Vyber si maturitní okruh a uč se vlastním tempem.' : 'podívej se, co už umíš a na čem ještě zapracovat.'}</p>
+            <h1 id="auth-gate-title">{page === 'flashcards' ? <>O kartičku blíž <span>k maturitě.</span></> : page === 'leaderboard' ? <>Každý bod tě posune <span>v žebříčku.</span></> : <>Tvůj pokrok <span>na jednom místě.</span></>}</h1>
+            <p className={styles.authDescription}>Přihlas se a {page === 'flashcards' ? 'pusť se do procvičování. Vyber si maturitní okruh a uč se vlastním tempem.' : page === 'leaderboard' ? 'podívej se na žebříček studentů a zjisti, jak si vedeš.' : 'podívej se, co už umíš a na čem ještě zapracovat.'}</p>
             <ul className={styles.authBenefits}>
               <li><span><Icon name="book" size={18} /></span>Kartičky přehledně podle předmětů a okruhů</li>
               <li><span><Icon name="chart" size={18} /></span>Uložený pokrok po každém procvičování</li>
@@ -84,7 +84,7 @@ export default function App() {
           </div>
         </div>
       </section> :
-        page === 'home' ? <HomePage onStart={() => user ? navigate('flashcards') : openAuth('register')} /> : page === 'contact' ? <ContactPage /> : page === 'flashcards' ? <StudyPage /> : <StatsPage key={page + (user?.id || "guest")} page={page} user={user} />}
+        page === 'home' ? <HomePage authenticated={!!user} onStart={() => user ? navigate('flashcards') : openAuth('register')} /> : page === 'contact' ? <ContactPage /> : page === 'flashcards' ? <StudyPage /> : <StatsPage key={page + (user?.id || "guest")} page={page} user={user} />}
     </main>
     <SiteFooter onNavigate={navigate} />
     {authMode && <AuthModal key={authMode} mode={authMode} onModeChange={openAuth} onClose={closeAuth} onAuthenticated={value => { setUser(value); setError('') }} />}
