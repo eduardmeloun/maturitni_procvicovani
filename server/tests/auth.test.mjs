@@ -87,3 +87,10 @@ test('Accounts: rate limiting and malformed requests', async t => {
   assert.equal((await post('login', {})).status, 429);
   assert.equal((await post('logout', {})).status, 200);
 });
+
+test('Registration supports the legacy normalized username index', async t => {
+  const { db, post } = await fixture(t);
+  db.exec('CREATE UNIQUE INDEX users_username_normalized ON users(normalize_username(username))');
+  assert.equal((await post('register', account)).status, 201);
+  assert.equal((await post('register', { ...account, username: 'STUDENT', email: 'other@example.test' })).status, 409);
+});

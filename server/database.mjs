@@ -13,6 +13,8 @@ export function transaction(db, work) {
 export function openDatabase(path = process.env.DATABASE_PATH || resolve(root, 'data/app.sqlite')) {
   if (path !== ':memory:') mkdirSync(dirname(resolve(path)), { recursive: true });
   const db = new DatabaseSync(path);
+  // Existing databases may have an expression index using this function.
+  db.function('normalize_username', { deterministic: true }, value => value.normalize('NFKC').toLowerCase());
   db.exec('PRAGMA foreign_keys = ON; PRAGMA journal_mode = WAL; PRAGMA busy_timeout = 5000;');
   db.exec('CREATE TABLE IF NOT EXISTS migrations (name TEXT PRIMARY KEY, applied_at TEXT NOT NULL) STRICT');
   const directory = new URL('./migrations/', import.meta.url);

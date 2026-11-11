@@ -49,7 +49,16 @@ export function AuthModal({ mode, onModeChange, onClose, onAuthenticated }: Prop
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault()
     if (busy) return
-    const data = Object.fromEntries(new FormData(event.currentTarget))
+    const form = event.currentTarget
+    const invalid = Array.from(form.elements).find((element): element is HTMLInputElement =>
+      element instanceof HTMLInputElement && element.willValidate && !element.validity.valid)
+    if (invalid) {
+      const label = invalid.labels?.[0]?.textContent?.trim() || 'Pole'
+      setError(`${label}: ${invalid.validationMessage}`)
+      invalid.focus()
+      return
+    }
+    const data = Object.fromEntries(new FormData(form))
     if ((isRegister || isReset) && data.password !== data.passwordConfirm) {
       setError(''); setPasswordMismatch(true)
       event.currentTarget.querySelector<HTMLInputElement>('[name=passwordConfirm]')?.focus()
@@ -104,15 +113,20 @@ export function AuthModal({ mode, onModeChange, onClose, onAuthenticated }: Prop
             <Button onClick={() => onModeChange('login')}>Zpět na přihlášení</Button>
           </div>
         ) : (
-          <form key={mode} className={styles.form} onSubmit={handleSubmit} onInput={event => {
+          <form noValidate key={mode} className={styles.form} onSubmit={handleSubmit} onInvalidCapture={event => {
+            const input = event.target as HTMLInputElement
+            const label = input.labels?.[0]?.querySelector('span')?.textContent
+            setError(`${label || 'Pole'}: ${input.validationMessage}`)
+          }} onInput={event => {
+            setError('')
             if (passwordMismatch) {
               const data = new FormData(event.currentTarget)
               if (data.get('password') === data.get('passwordConfirm')) setPasswordMismatch(false)
             }
           }}>
-            {error && <p role="alert">{error}</p>}
+
             <fieldset disabled={busy} style={{ border: 0, padding: 0, margin: 0, display: "contents" }}>
-            {isRegister && <InputField label="Uživatelské jméno" name="username" minLength={3} maxLength={32} pattern="[a-zA-Z0-9_.-]+" autoComplete="username" placeholder="Jak ti máme říkat?" required />}
+            {isRegister && <InputField label="Uživatelské jméno" name="username" minLength={3} maxLength={32} pattern="[a-zA-Z0-9_.\-]+" title="3–32 znaků: písmena bez diakritiky, číslice, podtržítko, tečka nebo pomlčka" autoComplete="username" placeholder="Jak ti máme říkat?" required />}
             {!isReset && <InputField label={isRegister || isForgot ? 'E-mail' : 'E-mail nebo uživatelské jméno'} name={isRegister || isForgot ? 'email' : 'login'} type={isRegister || isForgot ? 'email' : 'text'} autoComplete={isForgot || isRegister ? 'email' : 'username'} required maxLength={254} />}
             {!isForgot && <InputField label="Heslo" name="password" type="password" autoComplete={isRegister || isReset ? 'new-password' : 'current-password'} placeholder="Alespoň 8 znaků" minLength={8} maxLength={128} required />}
             {(isRegister || isReset) && <>
@@ -121,6 +135,7 @@ export function AuthModal({ mode, onModeChange, onClose, onAuthenticated }: Prop
             </>}
             {isRegister && <label className={styles.consent}><input type="checkbox" required /><span>Souhlasím s podmínkami používání.</span></label>}
             {!isRegister && !isForgot && !isReset && <button className={styles.forgot} type="button" onClick={() => onModeChange('forgot')}>Zapomněl/a jsi heslo?</button>}
+            {error && <p className={styles.passwordError} role="alert">{error}</p>}
             <Button type="submit" className={styles.submit}>
               {busy ? 'Odesílám…' : isForgot ? 'Poslat odkaz' : isReset ? 'Změnit heslo' : isRegister ? 'Vytvořit účet' : 'Přihlásit se'} <Icon name="arrow" size={18} />
             </Button>
