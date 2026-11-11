@@ -21,7 +21,7 @@
 .month { color: #7c8ba0; font-size: .74rem; text-transform: capitalize; }
 .guestNote { margin: 16px 0 0; font-size: .75rem; color: #7c8ba0; line-height: 1.6; }
 .rankingPanel { overflow: hidden; border: 1px solid #e3eaf4; border-radius: 19px; background: #fff; }
-.rankingHeader { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 24px 28px; h1 { margin: 0; font-size: 1.05rem; font-weight: 750; letter-spacing: -.03em; } select { max-width: 48%; min-height: 40px; padding: 8px 12px; border: 1px solid #e3eaf4; border-radius: 9px; background: #f7f9fc; color: #4673bc; font-size: .76rem; font-weight: 600; cursor: pointer; } }
+.rankingHeader { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 24px 28px; h1, h2 { margin: 0; font-size: 1.05rem; font-weight: 750; letter-spacing: -.03em; } select { max-width: 48%; min-height: 40px; padding: 8px 12px; border: 1px solid #e3eaf4; border-radius: 9px; background: #f7f9fc; color: #4673bc; font-size: .76rem; font-weight: 600; cursor: pointer; } }
 .ranking { margin: 0; padding: 0; list-style: none; li { display: flex; align-items: center; gap: 16px; min-height: 70px; padding: 16px 28px; border-top: 1px solid #eef2f7; } }
 .rank { display: grid; place-items: center; flex-shrink: 0; width: 32px; height: 32px; border-radius: 9px; color: #8392a8; background: #f5f7fb; font-size: .8rem; font-weight: 750; }
 .place1 { color: #a67b25; background: #fff4dc; }
@@ -45,7 +45,7 @@
   .weekday { font-size: .66rem; }
   .calendarFooter { margin-top: 22px; }
   .rankingPanel { border-radius: 16px; }
-  .rankingHeader { padding: 20px; h1 { font-size: .96rem; } select { font-size: .7rem; padding-inline: 8px; } }
+  .rankingHeader { padding: 20px; h1, h2 { font-size: .96rem; } select { font-size: .7rem; padding-inline: 8px; } }
   .ranking li { padding: 14px 20px; min-height: 62px; gap: 12px; }
   .rank { width: 29px; height: 29px; font-size: .75rem; }
   .studentName, .xp { font-size: .77rem; }
@@ -57,4 +57,10 @@
   .rankingHeader { align-items: flex-start; flex-direction: column; gap: 12px; select { max-width: 100%; } }
   .ranking li { padding-inline: 14px; gap: 9px; }
   .studentName, .xp { font-size: .72rem; }
+}
+.page.preview {
+  width: 100%; min-height: 0; padding: 0; background: transparent;
+  .rankingHeader { flex-wrap: wrap; padding: 20px; select { max-width: 100%; } }
+  .ranking { max-height: 420px; overflow-y: auto; }
+  .ranking li { padding: 14px 16px; gap: 10px; }
 }
